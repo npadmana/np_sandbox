@@ -16,11 +16,13 @@ def readTransfer(fn):
 def primPower(k, ns, As, k0=0.05):
   return As * (k/k0)**(ns-1)
 
-def power(transfer, ns=1.0, As=2.1e-9, h=0.7, pktype='cdm'):
+def power(transfer, ns=1.0, As=2.1e-9, h=0.7, pktype='cdm', pktype2=None):
+  if pktype2 is None :
+    pktype2 = pktype
   kh = transfer['kh'] + 0.0
   k = h*kh
   pp = primPower(k, ns, As)
-  pk = twopi2 * h**3 * k * pp * transfer[pktype]**2
+  pk = twopi2 * h**3 * k * pp * transfer[pktype]* transfer[pktype2]
   return (kh, pk)
 
 def p2xi(kh, pk):
