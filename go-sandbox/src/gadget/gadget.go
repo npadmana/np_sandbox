@@ -1,12 +1,5 @@
 package main
 
-import (
-  "errors"
-  "io"
-  "encoding/binary"
-  "bytes"
-)
-
 // Useful constants will go here
 const (
   headerSize = 256 // Gadget-2 header size
@@ -36,47 +29,27 @@ type Header struct {
   FlagEntrICS int32
 }
 
-// Fortran read 
-func fortranRead(ff io.Reader, buf []byte) (err error) {
-  var dummy, dummy1 int32
-  err = binary.Read(ff, binary.LittleEndian, &dummy)
-  if err != nil {
-    return err
-  }
 
-  _, err = io.ReadFull(ff, buf)
-  if err != nil {
-    return err
-  }
-
-  err = binary.Read(ff, binary.LittleEndian, &dummy)
-  if err != nil {
-    return err
-  }
-
-  // Sanity checks
-  if dummy!=dummy1 && int(dummy)!=len(buf) {
-    return errors.New("Error! Block sizes did not match")
-  }
-
-  return nil
+type Particle struct {
+  pos [3]float32
+  vel [3]float32
+  id uint64 // Store the particle position internally as ints
 }
 
-// Read in the Gadget header
-func ReadHeader(ff io.Reader) (h Header, err error) {
-  var buf headerBuf
+type ParticleArr []Particle
 
-  // Attempt to read in the file 
-  err = fortranRead(ff, buf[:])
-  if err != nil {
-    return h, err
-  }
 
-  // Convert from a binary buffer to the structure
-  // This two step process is to avoid having to count in the number of 
-  // unused bytes
-  err = binary.Read(bytes.NewReader(buf[:]), binary.LittleEndian, &h)
-
-  // All done
-  return
+// Define sort functions
+func (p ParticleArr) Len() int {
+  return len(p)
 }
+
+func (p ParticleArr) Less(i,j int) bool {
+  return p[i].id < p[j].id
+}
+
+func (p ParticleArr) Swap(i,j int) {
+  p[i], p[j] = p[j], p[i]
+}
+
+
