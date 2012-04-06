@@ -56,11 +56,12 @@ func ReadHeader(ff io.Reader) (h Header, err error) {
 
 // Read in particles
 // This assumes a single type of particle, with type = 1
-func ReadParticles(ff io.Reader, longid bool) (pp ParticleArr, err error) {
+func ReadParticles(ff io.Reader, longid bool) (h Header, pp ParticleArr, err error) {
 
   // Read in the header to figure out the number of particles
-  h, err := ReadHeader(ff)
+  h, err = ReadHeader(ff)
   if err!=nil {
+    stderr("Error reading header\n")
     return
   }
 
@@ -70,15 +71,18 @@ func ReadParticles(ff io.Reader, longid bool) (pp ParticleArr, err error) {
   // Positions
   err = fortranRead(ff, buf)
   if err!=nil {
+    stderr("Error reading positions\n")
     return 
   }
   for i := range pp {
     // Don't bother throwing an error
     err = binary.Read(bytes.NewReader(buf[i*12:i*12+12]), binary.LittleEndian, pp[i].pos[:])
   }
+
   // Velocities 
   err = fortranRead(ff, buf)
   if err!=nil {
+    stderr("Error reading velocities\n")
     return 
   }
   for i := range pp {
@@ -92,6 +96,7 @@ func ReadParticles(ff io.Reader, longid bool) (pp ParticleArr, err error) {
   }
   err = fortranRead(ff, buf[:h.Npart[1]*fac])
   if err!=nil {
+    stderr("Error reading IDs\n")
     return
   }
   var shortid uint32

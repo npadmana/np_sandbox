@@ -13,19 +13,57 @@ func main() {
 
   switch comm:=flag.Arg(0); {
     case comm=="head": head(flag.Arg(1))
+    case comm=="dump": dump(flag.Arg(1))
     case comm=="diff": diff(flag.Arg(1), flag.Arg(2))
     default : fmt.Println("Unknown command ", comm)
   }
 }
 
+func dump(s string) {
+  var h Header
+  var pp ParticleArr
+  var err error
+
+  ff, err := os.Open(s)
+  if err != nil {
+    fatal(err)
+  }
+  defer ff.Close()
+
+  // Now attempt to read in the file
+  // note that ff satisfies io.Reader, so that's what we pass around
+  h, pp, err = ReadParticles(ff, false)
+  if err != nil {
+    stderr("Not all blocks were successfully read!")
+  }
+
+  // Print it out
+  fmt.Printf("%+v \n",h)
+
+  np := pp.Len()
+  if np > 50 {
+    fmt.Println("Truncating to top 50 particles")
+    np = 50
+  }
+  for i:=0; i< np; i++ {
+    fmt.Printf("%+v \n", pp[i])
+  }
+
+  return
+}
+
+
 
 func diff(s1, s2 string) {
+  var err error
+  var pp1, pp2 ParticleArr
+
   ff1, err := os.Open(s1)
   if err!=nil {
     fatal(err)
   }
   defer ff1.Close()
-  pp1, err := ReadParticles(ff1, false)
+  _, pp1, err = ReadParticles(ff1, false)
   if err!=nil {
     fatal(err)
   }
@@ -35,7 +73,7 @@ func diff(s1, s2 string) {
     fatal(err)
   }
   defer ff2.Close()
-  pp2, err := ReadParticles(ff2, false)
+  _, pp2, err = ReadParticles(ff2, false)
   if err!=nil {
     fatal(err)
   }
