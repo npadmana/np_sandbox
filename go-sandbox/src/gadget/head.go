@@ -73,7 +73,7 @@ func readAll(s1 string, hc chan Header, ppc chan ParticleArr) {
 
 func diff(s1, s2 string) {
 
-  hc := make(chan Header)
+  hc := make(chan Header, 2)
   ppc := make(chan ParticleArr)
 
   go readAll(s1, hc, ppc)
@@ -94,6 +94,7 @@ func diff(s1, s2 string) {
   sort.Sort(pp1)
   sort.Sort(pp2)
 
+  var x0, v0 float64
   var dv, dx, maxdx, maxdv float64 = 0.0, 0.0,0.0, 0.0
   for i := range(pp1) {
     if pp1[i].id != pp2[i].id {
@@ -102,19 +103,21 @@ func diff(s1, s2 string) {
       fmt.Printf("%+v \n", pp2[i])
       return
     }
-    for i:=0; i<3; i++ {
-      dx = math.Abs(float64(pp1[i].pos[i] - pp2[i].pos[i]))
-      dv = math.Abs(float64(pp1[i].vel[i] - pp2[i].vel[i]))
+    for j:=0; i<3; i++ {
+      dx = math.Abs(float64(pp1[i].pos[j] - pp2[i].pos[j]))
+      dv = math.Abs(float64(pp1[i].vel[j] - pp2[i].vel[j]))
       if dx > maxdx {
         maxdx = dx
+        x0 = float64(pp1[i].pos[j])
       }
       if dv > maxdv {
         maxdv = dv
+        v0 = float64(pp1[i].vel[j])
       }
     }
   }
 
-  fmt.Println("Maximum dx, dv =", dx, dv)
+  fmt.Println("Maximum dx, x, dv, v =", dx, x0, dv, v0)
 }
 
 
