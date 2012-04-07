@@ -53,30 +53,37 @@ func dump(s string) {
 }
 
 
-
-func diff(s1, s2 string) {
-  var err error
-  var pp1, pp2 ParticleArr
-
+func readAll(s1 string, hc chan Header, ppc chan ParticleArr) {
   ff1, err := os.Open(s1)
   if err!=nil {
     fatal(err)
   }
   defer ff1.Close()
-  _, pp1, err = ReadParticles(ff1, false)
+  h, pp, err := ReadParticles(ff1, false)
   if err!=nil {
     fatal(err)
   }
 
-  ff2, err := os.Open(s2)
-  if err!=nil {
-    fatal(err)
-  }
-  defer ff2.Close()
-  _, pp2, err = ReadParticles(ff2, false)
-  if err!=nil {
-    fatal(err)
-  }
+  hc <- h
+  ppc <- pp
+
+  return
+}
+
+
+func diff(s1, s2 string) {
+
+  hc := make(chan Header)
+  ppc := make(chan ParticleArr)
+
+  go readAll(s1, hc, ppc)
+  go readAll(s2, hc, ppc)
+
+  pp1 := <-ppc
+  pp2 := <-ppc
+
+  //_, pp1 := readAll(s1)
+  //_, pp2 := readAll(s2)
 
   if l1, l2:=pp1.Len(), pp2.Len(); l1 != l2 {
     fmt.Println("Files appear to have different numbers of particles", l1, l2)
