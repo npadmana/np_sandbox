@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    188838,       3459]
-NotebookOptionsPosition[    186799,       3386]
-NotebookOutlinePosition[    187159,       3402]
-CellTagsIndexPosition[    187116,       3399]
+NotebookDataLength[    189018,       3459]
+NotebookOptionsPosition[    186979,       3386]
+NotebookOutlinePosition[    187339,       3402]
+CellTagsIndexPosition[    187296,       3399]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -103,7 +103,7 @@ Cell[BoxData[
   RowBox[{"2.50646438858`", ",", "7.7461122735`", ",", "0.0490664711063`"}], 
   "}"}]], "Output",
  CellChangeTimes->{3.545130521679482*^9, 3.545132941165079*^9, 
-  3.545132979078933*^9, 3.5451330265048523`*^9}]
+  3.545132979078933*^9, 3.5451330265048523`*^9, 3.545143134560713*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -187,7 +187,7 @@ Cell[BoxData[{
        RowBox[{"SetOptions", "[", 
         RowBox[{"FigurePanel", ",", " ", 
          RowBox[{"FontFamily", "\[Rule]", " ", "\"\<Times\>\""}], ",", " ", 
-         RowBox[{"FontSize", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+         RowBox[{"FontSize", "\[Rule]", " ", "35"}]}], "]"}], ",", 
        "\[IndentingNewLine]", 
        RowBox[{"SetOptions", "[", 
         RowBox[{"SchemeArrow", ",", " ", 
@@ -321,15 +321,15 @@ Cell[BoxData[{
    RowBox[{"\"\<dr79.pdf\>\"", ",", " ", "fig"}], "]"}], 
   ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdz2kow3EcBvD1V44XxLIchYZQtIRXe+OakTuzKUdhzWgHMUeozRGizZXy
-AqEVJquV84WwsLKNItKUJG/YxCT3+fxefPu8eOp5+jIrawtEFI1GY/4fPOec
-myw1d8mOxpBbOPGrc0I910lcMGS9QVsH2836r+JBzIBG2UcwFOz7h0PfqrpE
-SHf9ToV15QVZUO5ny4fsmDAezGkSlEFWRakQhsZJ5HCKT1PAecrSDFUD/G6o
-40SvQKm/2AgzHSITHBJHWqBjl+mAZxzDPWyKSKIfYo/qZEAh7zIQvijTQ2Ch
-RsGC2zmPxM+X3njoHmRnQ9bceApslZ0SrcOzGXBrz0xs+RLkQkO7qZD07y2W
-wv5BbwlcfT9ugDebF0TpCbcNXo7xiD2xHirI3e7pgtpOdR9UByz1Q6+n1UEY
-KD8gPm9MjsKfs2miZt1zAhYvZs/Aa6VgnuQJ2mWor887hlHmtCtYZPW+gQsl
-I6/Q7tz5Iv9Lfb6hbU1PHaGv+sgF/gEZuiVr
+1:eJwdz1sow3EUB/D1V8MDjcil0BCKlvC0F7cZYWhjyqVcYmRGzCXUZoTI3FIe
+Rki5ZbVyfVhmYcVGTaQpSSuxiUnu1+/v4fR5OPX9nsMsq+NXUDQaLfh/4Dnn
+3GCsvku0NwXdQtXvkgOquQ7ioibjDVo62c6mf6UPIm+or/0IhMJ931DoVVkf
+Dz3p38mwvoSfASU+lhzIjgoRQF6zsBiySovKYXBMjQRO5dGkcIEytkD5QF43
+XOJErkGxr0gP0+0VBjgsCjdC+y7TDs84mnvYHJbgeYQ+SuENywWX/vBFlhoE
+c5VSFtTxHomfL72x0CXAxoas+Ykk2FZ7SjSNzKbB7b1DYuuXMAtqOgy5JH9v
+uQj2DzFq4Pq7uRFatRdE8Qm3HV6OC4g90a5yyNX1dME5xWAfHPRb6YfuT+tD
+0F9yQHzemhyDP2fTROWmmwoWLGfOwGuZcIHs4+ZWoboh2wwjDlOuYL6JYYWL
+haOv0ObY+SL/iz2+oWVDTR0jr+rYCdpU1I0Zd2vpxD/D7S6+
   "]]
 }, Open  ]],
 
@@ -359,7 +359,7 @@ Cell[BoxData[
    RowBox[{"wa", "\[Rule]", "0.`"}], ",", 
    RowBox[{"TCMB", "\[Rule]", "2.726`"}], ",", 
    RowBox[{"gamma", "\[Rule]", "0.55`"}]}], "}"}]], "Output",
- CellChangeTimes->{3.545137908054401*^9}]
+ CellChangeTimes->{3.545137908054401*^9, 3.54514313912442*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -388,7 +388,7 @@ Cell[BoxData[
 Cell[BoxData["9.78461942314038957117652628983531873647`12."], "Output",
  CellChangeTimes->{{3.5451379356726294`*^9, 3.5451379436253853`*^9}, 
    3.545138012914126*^9, 3.545138203059134*^9, 3.545138430934041*^9, 
-   3.545138826888644*^9, 3.545138893540435*^9}]
+   3.545138826888644*^9, 3.545138893540435*^9, 3.545143139192244*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -440,7 +440,7 @@ Cell[BoxData[
    RowBox[{"-", "13.699504357602793`"}], ",", "0.001`"}], "}"}]], "Output",
  CellChangeTimes->{
   3.5451386058219547`*^9, {3.5451387824403477`*^9, 3.5451387950873747`*^9}, 
-   3.545138913174073*^9}]
+   3.545138913174073*^9, 3.545143142885044*^9}]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -596,7 +596,7 @@ KlG8
  CellChangeTimes->{{3.54513828460952*^9, 3.545138291158916*^9}, {
    3.545138469253652*^9, 3.545138492365539*^9}, 3.5451385334322968`*^9, 
    3.545138626604089*^9, 3.5451387135378857`*^9, 3.545138757621719*^9, 
-   3.5451389231960993`*^9, 3.545139139631734*^9}]
+   3.5451389231960993`*^9, 3.545139139631734*^9, 3.545143143109338*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -637,7 +637,7 @@ Cell[BoxData[
    "1.0299999999999998`", ",", "1.02`", ",", "1.0099999999999998`", ",", 
    "1.`"}], "}"}]], "Output",
  CellChangeTimes->{3.5451369656945353`*^9, 3.545137030843051*^9, 
-  3.5451417528257027`*^9}]
+  3.5451417528257027`*^9, 3.5451431432465553`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -656,7 +656,7 @@ Cell[BoxData[
           RowBox[{"FigurePanel", ",", " ", 
            RowBox[{"FontFamily", "\[Rule]", " ", "\"\<Times\>\""}], ",", " ", 
            
-           RowBox[{"FontSize", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+           RowBox[{"FontSize", "\[Rule]", " ", "35"}]}], "]"}], ",", 
          "\[IndentingNewLine]", 
          RowBox[{"SetOptions", "[", 
           RowBox[{"SchemeArrow", ",", " ", 
@@ -849,13 +849,13 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"a", ",", " ", "avals"}], "}"}]}], "]"}]}], ";"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQA2IQvUF635Lzma8cDTnvHwTRbPMXnADRTLUdV0B0CR/3
+1:eJxTTMoPSmViYGAQB2IQvUF635Lzma8cDTnvHwTRbPMXnADRTLUdV0B0CR/3
 ZxCtWzHpC4huYkyVvACkeY5NkAHRDFd3aoNoqekquiD6S+YdwYtAun97mzKI
 1tGI1gLRpy4Y2oBoj6vrnEC0VNApMD0v9owbiPae0BEEoj+9cQ0H65M7Ggmi
 eY5/iAXRLh8sU0H0vb2f8sD0jus9IHrqle1TQfTpDJdFIPpYXsgyED0hdsIq
 EF019/QGEN20x2gPiD50Z9lBEL1uRegpEH1538OLIFoxI/8OiJ4cuuwbiK5b
 V/gbbK/CPqlLQLrd5KYMiP43PVYDROd/2gmmd8S80wHRq+rZzUD0iZw2exC9
-69weMA0A+A7E+g==
+69weMF1lNOkFiLbbsxZMAwCYRc58
   "]],
 
 Cell[CellGroupData[{
@@ -3064,7 +3064,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3080,7 +3080,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3096,7 +3096,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3112,7 +3112,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3128,7 +3128,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3144,13 +3144,13 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
            FontColor->GrayLevel[0],
            FontOpacity->1],
-          DisplayForm], {0.5, -0.12276760416666677`}, {0, 0}, Automatic, {1, 
+          DisplayForm], {0.5, -0.1713884375000001}, {0, 0}, Automatic, {1, 
          0}], InsetBox[
          TagBox[
           StyleBox[
@@ -3160,13 +3160,13 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
            FontColor->GrayLevel[0],
            FontOpacity->1],
-          DisplayForm], {-0.06320708333333327, 0.4999999999999998}, {0, 0}, 
+          DisplayForm], {-0.08828925925925922, 0.4999999999999998}, {0, 0}, 
          Automatic, {0, 1}], InsetBox[
          TagBox[
           StyleBox[
@@ -3176,7 +3176,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3192,7 +3192,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3208,7 +3208,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3224,7 +3224,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3240,7 +3240,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3256,7 +3256,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3272,13 +3272,13 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
            FontColor->GrayLevel[0],
            FontOpacity->1],
-          DisplayForm], {0.5, -0.8227676041666667}, {0, 0}, Automatic, {1, 
+          DisplayForm], {0.5, -0.8713884375000001}, {0, 0}, Automatic, {1, 
          0}], InsetBox[
          TagBox[
           StyleBox[
@@ -3288,7 +3288,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3304,7 +3304,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3320,7 +3320,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
@@ -3336,14 +3336,14 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
            ShowAutoStyles->False,
            SingleLetterItalics->False,
            FontFamily->"Times",
-           FontSize->25,
+           FontSize->35,
            FontWeight->"Plain",
            FontSlant->"Plain",
            FontTracking->"Plain",
            FontColor->GrayLevel[0],
            FontOpacity->1],
-          DisplayForm], {-0.0632070833333333, -0.45000000000000007`}, {0, 0}, 
-         Automatic, {0, 1}]}}}}}},
+          DisplayForm], {-0.08828925925925923, -0.45000000000000007`}, {0, 0},
+          Automatic, {0, 1}]}}}}}},
   AspectRatio->NCache[
     Rational[2, 3], 0.6666666666666666],
   Axes->False,
@@ -3367,7 +3367,7 @@ LLtk1wl75j/40j2gWs/KvzzzXHLCweY/mpmZmZmZyb8H682S
   Ticks->None]], "Output",
  CellChangeTimes->{
   3.545141524127966*^9, {3.545141660069849*^9, 3.545141689908297*^9}, 
-   3.545141834561166*^9}]
+   3.545141834561166*^9, 3.5451432064018307`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -3414,52 +3414,52 @@ Cell[1913, 62, 679, 17, 43, "Code"],
 Cell[2595, 81, 430, 10, 43, "Input"],
 Cell[CellGroupData[{
 Cell[3050, 95, 145, 3, 27, "Input"],
-Cell[3198, 100, 239, 5, 27, "Output"]
+Cell[3198, 100, 261, 5, 27, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3486, 111, 106, 1, 67, "Section"],
-Cell[3595, 114, 362, 9, 27, "Input"],
-Cell[3960, 125, 1703, 40, 89, "Code"],
-Cell[5666, 167, 413, 10, 43, "Input"],
-Cell[6082, 179, 6406, 153, 448, "Input"]
+Cell[3508, 111, 106, 1, 67, "Section"],
+Cell[3617, 114, 362, 9, 27, "Input"],
+Cell[3982, 125, 1703, 40, 89, "Code"],
+Cell[5688, 167, 413, 10, 43, "Input"],
+Cell[6104, 179, 6418, 153, 448, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12525, 337, 104, 1, 67, "Section"],
-Cell[12632, 340, 98, 1, 26, "Text"],
+Cell[12559, 337, 104, 1, 67, "Section"],
+Cell[12666, 340, 98, 1, 26, "Text"],
 Cell[CellGroupData[{
-Cell[12755, 345, 100, 1, 27, "Input"],
-Cell[12858, 348, 552, 13, 27, "Output"]
+Cell[12789, 345, 100, 1, 27, "Input"],
+Cell[12892, 348, 573, 13, 27, "Output"]
 }, Open  ]],
-Cell[13425, 364, 173, 4, 26, "Text"],
+Cell[13480, 364, 173, 4, 26, "Text"],
 Cell[CellGroupData[{
-Cell[13623, 372, 553, 13, 27, "Input"],
-Cell[14179, 387, 259, 3, 27, "Output"]
+Cell[13678, 372, 553, 13, 27, "Input"],
+Cell[14234, 387, 281, 3, 27, "Output"]
 }, Open  ]],
-Cell[14453, 393, 556, 13, 27, "Input"],
-Cell[15012, 408, 653, 18, 27, "Input"],
+Cell[14530, 393, 556, 13, 27, "Input"],
+Cell[15089, 408, 653, 18, 27, "Input"],
 Cell[CellGroupData[{
-Cell[15690, 430, 223, 4, 27, "Input"],
-Cell[15916, 436, 238, 6, 27, "Output"]
+Cell[15767, 430, 223, 4, 27, "Input"],
+Cell[15993, 436, 260, 6, 27, "Output"]
 }, Open  ]],
-Cell[16169, 445, 564, 17, 43, "Input"],
+Cell[16268, 445, 564, 17, 43, "Input"],
 Cell[CellGroupData[{
-Cell[16758, 466, 538, 13, 27, "Input"],
-Cell[17299, 481, 6864, 117, 251, "Output"]
+Cell[16857, 466, 538, 13, 27, "Input"],
+Cell[17398, 481, 6886, 117, 251, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24212, 604, 106, 1, 67, "Section"],
+Cell[24333, 604, 106, 1, 67, "Section"],
 Cell[CellGroupData[{
-Cell[24343, 609, 431, 10, 27, "Input"],
-Cell[24777, 621, 1063, 18, 43, "Output"]
+Cell[24464, 609, 431, 10, 27, "Input"],
+Cell[24898, 621, 1087, 18, 43, "Output"]
 }, Open  ]],
-Cell[25855, 642, 9565, 216, 673, "Input"],
+Cell[26000, 642, 9577, 216, 673, "Input"],
 Cell[CellGroupData[{
-Cell[35445, 862, 145, 3, 27, "Input"],
-Cell[35593, 867, 150511, 2502, 879, "Output"]
+Cell[35602, 862, 145, 3, 27, "Input"],
+Cell[35750, 867, 150534, 2502, 879, "Output"]
 }, Open  ]],
-Cell[186119, 3372, 664, 11, 27, "Input"]
+Cell[186299, 3372, 664, 11, 27, "Input"]
 }, Open  ]]
 }
 ]
