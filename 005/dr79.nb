@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    189018,       3459]
-NotebookOptionsPosition[    186979,       3386]
-NotebookOutlinePosition[    187339,       3402]
-CellTagsIndexPosition[    187296,       3399]
+NotebookDataLength[    189070,       3461]
+NotebookOptionsPosition[    187033,       3388]
+NotebookOutlinePosition[    187391,       3404]
+CellTagsIndexPosition[    187348,       3401]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3375,17 +3375,19 @@ Cell[BoxData[
   RowBox[{"Export", "[", 
    RowBox[{"\"\<dr79_anim.gif\>\"", ",", " ", "fig2", ",", " ", 
     RowBox[{"AnimationRepetitions", "\[Rule]", "0"}], ",", " ", 
-    RowBox[{"DisplayDurations", "\[Rule]", "2.5"}]}], "]"}], ";"}]], "Input",
+    RowBox[{"DisplayDurations", "\[Rule]", "10.0"}]}], "]"}], ";"}]], "Input",\
+
  CellChangeTimes->{{3.54513642194088*^9, 3.545136654969872*^9}, {
   3.545136709019412*^9, 3.5451368042652597`*^9}, {3.5451370483455143`*^9, 
   3.54513706057717*^9}, {3.545137355156434*^9, 3.5451373805241756`*^9}, {
   3.545137501807251*^9, 3.545137513143445*^9}, {3.545137547541299*^9, 
   3.545137566312965*^9}, {3.545137728717745*^9, 3.545137729663073*^9}, {
-  3.545141137101493*^9, 3.545141137173112*^9}}]
+  3.545141137101493*^9, 3.545141137173112*^9}, {3.5451445757992973`*^9, 
+  3.545144577137623*^9}}]
 }, Open  ]]
 },
 WindowSize->{1637, 1125},
-WindowMargins->{{Automatic, 18}, {-22, Automatic}},
+WindowMargins->{{Automatic, 93}, {Automatic, 0}},
 FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
 2011)",
 StyleDefinitions->"Default.nb"
@@ -3459,7 +3461,7 @@ Cell[CellGroupData[{
 Cell[35602, 862, 145, 3, 27, "Input"],
 Cell[35750, 867, 150534, 2502, 879, "Output"]
 }, Open  ]],
-Cell[186299, 3372, 664, 11, 27, "Input"]
+Cell[186299, 3372, 718, 13, 27, "Input"]
 }, Open  ]]
 }
 ]
