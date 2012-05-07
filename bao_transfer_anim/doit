@@ -1,0 +1,8 @@
+# Acoustic wave animation from Daniel Eisenstein...
+# and instructions to convert to movie...
+
+
+# I started by converting to PDF since convert did odd things to the gif page sizes
+
+convert acoustic_anim.pdf bao%05d.png
+mencoder 'mf://*.png' -mf type=png:fps=3 -ovc lavc -lavcopts vcodec=mjpeg -oac copy -o animation.avi
