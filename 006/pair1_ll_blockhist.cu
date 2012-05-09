@@ -99,7 +99,7 @@ __global__ void reduce_histogram(int Nh, HISTINT *hist) {
   int offset = blockIdx.x * Nh;
   if (blockIdx.x > 0)  {
     while (ii < Nh) {
-      atomicAdd( (unsigned long long*) &hist[ii], hist[ii+offset]);
+      atomicAdd( (unsigned long long*) &hist[ii], (unsigned long long) hist[ii+offset]);
       ii += blockDim.x;
     }
   }
@@ -169,7 +169,7 @@ double cpu_harness(int N, int blocks) {
   HISTINT *gpu_hist;
 
   HANDLE_ERROR( cudaMalloc( (void**)&gpu_hist, Nhist*blocks*sizeof(HISTINT)));
-  HANDLE_ERROR( cudaMemset( gpu_hist, 0, Nhist*sizeof(HISTINT)));
+  HANDLE_ERROR( cudaMemset( gpu_hist, 0, Nhist*blocks*sizeof(HISTINT)));
   HANDLE_ERROR( cudaEventRecord( start, 0 ) );
   paircount_kernel<<<blocks, 512>>>(N, pg1.x, pg1.y, pg1.z, 
       N, pg2.x, pg2.y, pg2.z, Nhist, gpu_hist);
