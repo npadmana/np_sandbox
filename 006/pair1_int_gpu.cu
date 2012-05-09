@@ -81,7 +81,7 @@ __global__ void paircount_kernel(
       dx = x2[jj] - x;
       dy = y2[jj] - y;
       dz = z2[jj] - z;
-      dr = sqrt(dx*dx + dy*dy + dz*dz);
+      dr = sqrtf(dx*dx + dy*dy + dz*dz);
       idr = (int) (dr*Nh);
       if (idr < Nh) atomicAdd( &hist[idr], 1);
     }
