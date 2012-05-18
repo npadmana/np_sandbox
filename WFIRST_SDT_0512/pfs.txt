@@ -1,0 +1,19 @@
+Nikhil,
+
+You asked for the PFS survey parameters -- see below.
+
+Chris
+
+Area = 1464 deg^2
+
+number density of galaxies (in h^3/Mpc^3)
+
+1.9e-4 @ 0.6<z<0.8
+6.0e-4 @ 0.8<z<1.0
+5.8e-4 @ 1.0<z<1.2
+7.8e-4 @ 1.2<z<1.4
+5.5e-4 @ 1.4<z<1.6
+3.1e-4 @ 1.6<z<2.0
+2.7e-4 @ 2.0<z<2.4
+
+[Note that these have an h and the WFIRST numbers I sent around have no h.]
