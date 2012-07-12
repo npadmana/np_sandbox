@@ -4,3 +4,4 @@ deleteme/
 a.out
 *.x
 .Rproj.user
+.DS_Store
