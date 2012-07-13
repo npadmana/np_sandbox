@@ -30,8 +30,8 @@ Get.Sample.SpAll <- function(conn, galtype=c("GAL_CMASS")) {
 
 Make.Sample.Spall <- function(fn) {
   driv <- DBSetup()
-  tmp <- Get.Sample.SpAll(driv$conn, c("GAL_LOZ", "GAL_CMASS", "GAL_CMASS_SPARSE"))
-  save(tmp, file=fn)
+  spall <- Get.Sample.SpAll(driv$conn, c("GAL_LOZ", "GAL_CMASS", "GAL_CMASS_SPARSE"))
+  save(spall, file=fn)
   dbDisconnect(driv$conn)
 }
 
