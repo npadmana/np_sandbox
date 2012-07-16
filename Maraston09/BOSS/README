@@ -1,0 +1,56 @@
+Hi Nikhil,
+
+
+please find calculations
+
+
+at www.maraston.eu/BOSS/models_Molly_Claudia.tar.gz
+
+
+for passive LRG models and SF models for several stellar masses and redshifts.
+
+
+You will find several files, e.g.
+
+
+mags_redshift_M09.M1e10
+
+
+refers to calculations for 10^10 Msun for the passive LRG model (M09). Here files only differ for stellar mass.
+
+
+In the SF case, there are two sets of files, which either include dust reddening or not.
+
+
+They are called e.g.
+
+
+mags_redshift_csptau10gred.M1e10: constant SF model including reddening
+
+
+mags_redshift_csptau10gnored.M1e10: the same without reddening
+
+
+again for several masses.
+
+
+The header is the same for every file, namely:
+
+
+M*/Msun             z         t/Gyr       Mu          Mg           Mr          Mi            Mz           u              g             r             i              z
+  .1000E+11    0.4100   0.0010  -23.3856  -23.3570  -23.4013  -23.3266  -23.2236   18.3457   18.3744   18.3300   18.4048   18.5078
+
+
+
+  It's all AB, so you just subtract mags and get colours
+
+
+  The same files named 'fnezgrid' are models calculated for a denser z grid within CMASS.
+
+
+  Please, let me know if you have troubles.
+
+
+  Claudia
+
+
