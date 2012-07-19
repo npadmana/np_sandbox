@@ -1,6 +1,7 @@
 # Test to see if CMASS in spAll is correctly set
 library(ggplot2)
 library(bitops)
+library(data.table)
 source('~/myWork/nputils/R/BOSS/common.R')
 source('~/myWork/nputils/R/BOSS/galtarget.R')
 
