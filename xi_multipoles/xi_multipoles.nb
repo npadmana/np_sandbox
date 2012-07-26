@@ -1,0 +1,464 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     14633,        455]
+NotebookOptionsPosition[     13131,        399]
+NotebookOutlinePosition[     13489,        415]
+CellTagsIndexPosition[     13446,        412]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Code up the multipole algebra in Xu et al, 2012 1206.6732.\
+\>", "Text",
+ CellChangeTimes->{{3.55224867397505*^9, 3.5522487082493553`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Definitions", "Section",
+ CellChangeTimes->{{3.552241369045076*^9, 3.552241381430937*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Start by defining the various terms - perpendicular (p) and parallel (l), \
+with and without distortions\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.55224138474953*^9, 3.552241441135262*^9}}],
+
+Cell[TextData[{
+ "This can get very confusing, so let me be explicit here. The d and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Mu]", "d"], " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "values are the true underlying values, while the s and \[Mu] case \
+(unsubscripted) are the observed coordinate system."
+}], "Text",
+ CellChangeTimes->{{3.552248264916416*^9, 3.552248359163327*^9}, {
+  3.552248399471101*^9, 3.5522484072521677`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", " ", "=", " ", "True"}], ";"}]], "Input",
+ CellChangeTimes->{{3.552242778570448*^9, 3.55224278468408*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"s", " ", ">", "0"}], ",", " ", 
+     RowBox[{"\[Alpha]", " ", ">", " ", "0"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.552242786987624*^9, 3.5522428008267927`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "l"], "[", 
+   RowBox[{"\[Alpha]_", ",", " ", "\[Epsilon]_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"s", " ", "\[Mu]", " ", "\[Alpha]", " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", " ", "+", " ", "\[Epsilon]"}], ")"}], "2"]}]}]], "Input",
+ CellChangeTimes->{{3.552241443248083*^9, 3.5522415936389523`*^9}, {
+  3.552241629482225*^9, 3.5522417192429943`*^9}, {3.552242039202607*^9, 
+  3.552242055410904*^9}, {3.552242141865584*^9, 3.552242146051*^9}, {
+  3.5522431443314466`*^9, 3.552243154912237*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "p"], "[", 
+   RowBox[{"\[Alpha]_", ",", " ", "\[Epsilon]_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"s", " ", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"1", "-", 
+     SuperscriptBox["\[Mu]", "2"]}], "]"}], " ", "\[Alpha]", " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", " ", "+", " ", "\[Epsilon]"}], ")"}], 
+    RowBox[{"-", "1"}]]}]}]], "Input",
+ CellChangeTimes->{{3.552241738752743*^9, 3.55224179003181*^9}, {
+  3.552242060918783*^9, 3.552242080111511*^9}, {3.552242152130526*^9, 
+  3.5522421539463987`*^9}, {3.5522431584865513`*^9, 3.5522431747043753`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Now work out how d and mu transform to lowest order in \[Epsilon]\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.552241943081787*^9, 3.552241966007536*^9}, {
+  3.552242092466441*^9, 3.5522420931150427`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"d", "[", 
+   RowBox[{"\[Alpha]_", ",", " ", "\[Epsilon]_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"Series", "[", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{
+         SubscriptBox["d", "p"], "[", 
+         RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}], "2"], " ", "+", 
+       " ", 
+       SuperscriptBox[
+        RowBox[{
+         SubscriptBox["d", "l"], "[", 
+         RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}], "2"]}], "]"}], 
+     ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\[Epsilon]", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.552241828566433*^9, 3.552241906552761*^9}, {
+  3.5522419727350893`*^9, 3.552241989252123*^9}, {3.552242105432426*^9, 
+  3.552242110943046*^9}, {3.552242174966316*^9, 3.5522421755259533`*^9}, {
+  3.5522424674023523`*^9, 3.5522424918393707`*^9}, {3.552242613075161*^9, 
+  3.552242643574399*^9}, {3.552242771306902*^9, 3.552242774728381*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"d", "[", 
+  RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.552242659614773*^9, 3.552242668011034*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{"s", " ", "\[Alpha]"}], "+", 
+   RowBox[{"s", " ", "\[Alpha]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", 
+      RowBox[{"3", " ", 
+       SuperscriptBox["\[Mu]", "2"]}]}], ")"}], " ", "\[Epsilon]"}], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "\[Epsilon]", "]"}], "2"],
+    SeriesData[$CellContext`\[Epsilon], 0, {}, 0, 2, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`\[Epsilon], 
+   0, {$CellContext`s $CellContext`\[Alpha], $CellContext`s $CellContext`\
+\[Alpha] (-1 + 3 $CellContext`\[Mu]^2)}, 0, 2, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.552242668585902*^9, 3.552242810732192*^9, 
+  3.552243182340304*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[Mu]", "d"], "[", 
+   RowBox[{"\[Alpha]_", ",", " ", "\[Epsilon]_"}], "]"}], ":=", " ", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"Series", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SubscriptBox["d", "l"], "[", 
+       RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}], "/", 
+      RowBox[{"d", "[", 
+       RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\[Epsilon]", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5522426922953653`*^9, 3.552242765456707*^9}, {
+  3.552242818863185*^9, 3.552242849596443*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[Mu]", "d"], "[", 
+  RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.552242832577283*^9, 3.552242842223324*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[Mu]", "-", 
+   RowBox[{"3", " ", 
+    RowBox[{"(", 
+     RowBox[{"\[Mu]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox["\[Mu]", "2"]}], ")"}]}], ")"}], " ", "\[Epsilon]"}], 
+   "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "\[Epsilon]", "]"}], "2"],
+    SeriesData[$CellContext`\[Epsilon], 0, {}, 0, 2, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`\[Epsilon], 
+   0, {$CellContext`\[Mu], (-3) $CellContext`\[Mu] (-1 + \
+$CellContext`\[Mu]^2)}, 0, 2, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.552242842827388*^9, 3.5522428514456787`*^9}, 
+   3.552243186491407*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Set up the input correlation function\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.552246705421986*^9, 3.552246719898535*^9}, {
+  3.552248364866973*^9, 3.552248366009944*^9}}],
+
+Cell[TextData[{
+ "This is in the true cosmology space, so we do need d and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Mu]", "d"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.552248373364052*^9, 3.5522484352362757`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xi", "=", " ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Xi]", "0"], "[", 
+     RowBox[{"d", "[", 
+      RowBox[{"\[Alpha]", ",", " ", "\[Epsilon]"}], "]"}], "]"}], " ", "+", 
+    " ", 
+    RowBox[{
+     RowBox[{"LegendreP", "[", 
+      RowBox[{"2", ",", 
+       RowBox[{
+        SubscriptBox["\[Mu]", "d"], "[", 
+        RowBox[{"\[Alpha]", ",", "\[Epsilon]"}], "]"}]}], "]"}], 
+     RowBox[{
+      SubscriptBox["\[Xi]", "2"], "[", 
+      RowBox[{"d", "[", 
+       RowBox[{"\[Alpha]", ",", "\[Epsilon]"}], "]"}], "]"}]}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.55224672341119*^9, 3.552246808401516*^9}, 
+   3.55224685014725*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Now set up the integral ", "Subsubsection",
+ CellChangeTimes->{{3.552243860955903*^9, 3.552243867337841*^9}}],
+
+Cell["\<\
+The integral is in observed coordinates, so we use \[Mu]. \
+\>", "Text",
+ CellChangeTimes->{{3.552248720006489*^9, 3.5522487489057493`*^9}, {
+  3.552248827921645*^9, 3.552248838117507*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"func", "[", "l_", "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"LegendreP", "[", 
+     RowBox[{"l", ",", "\[Mu]"}], "]"}], " ", "*", " ", "xi", " ", "*", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "l"}], "+", "1"}], ")"}], "/", "2"}]}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.5522438853294*^9, 3.5522440523867407`*^9}, {
+  3.552246840401389*^9, 3.5522468529067507`*^9}, {3.552247650961019*^9, 
+  3.552247652035714*^9}, {3.552248596881703*^9, 3.552248598662867*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"func", "[", "0", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.552244054781004*^9, 3.5522440842401114`*^9}, {
+  3.552246859141028*^9, 3.552246859440496*^9}, {3.552246938706208*^9, 
+  3.55224693935518*^9}, {3.552248442930463*^9, 3.552248443142693*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Xi]", "0"], "[", 
+    RowBox[{"s", " ", "\[Alpha]"}], "]"}], "+", 
+   RowBox[{
+    FractionBox["2", "5"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", " ", 
+       RowBox[{
+        SubscriptBox["\[Xi]", "2"], "[", 
+        RowBox[{"s", " ", "\[Alpha]"}], "]"}]}], "+", 
+      RowBox[{"s", " ", "\[Alpha]", " ", 
+       RowBox[{
+        SuperscriptBox[
+         SubscriptBox["\[Xi]", "2"], "\[Prime]",
+         MultilineFunction->None], "[", 
+        RowBox[{"s", " ", "\[Alpha]"}], "]"}]}]}], ")"}], " ", "\[Epsilon]"}],
+    "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "\[Epsilon]", "]"}], "2"],
+    SeriesData[$CellContext`\[Epsilon], 0, {}, 0, 2, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`\[Epsilon], 0, {
+    Subscript[$CellContext`\[Xi], 0][$CellContext`s $CellContext`\[Alpha]], 
+    Rational[2, 5] (
+     3 Subscript[$CellContext`\[Xi], 
+        2][$CellContext`s $CellContext`\[Alpha]] + $CellContext`s \
+$CellContext`\[Alpha] Derivative[1][
+        Subscript[$CellContext`\[Xi], 
+         2]][$CellContext`s $CellContext`\[Alpha]])}, 0, 2, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.552244075577511*^9, 3.552244090926961*^9}, 
+   3.552246863087966*^9, 3.552246944366993*^9, 3.552247660651005*^9, 
+   3.5522484442656384`*^9, 3.552248603966423*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"func", "[", "2", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.55224694859016*^9, 3.552246964220052*^9}, {
+  3.552248449553302*^9, 3.5522484503640127`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Xi]", "2"], "[", 
+    RowBox[{"s", " ", "\[Alpha]"}], "]"}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["6", "7"], " ", 
+       RowBox[{
+        SubscriptBox["\[Xi]", "2"], "[", 
+        RowBox[{"s", " ", "\[Alpha]"}], "]"}]}], "+", 
+      RowBox[{"2", " ", "s", " ", "\[Alpha]", " ", 
+       RowBox[{
+        SuperscriptBox[
+         SubscriptBox["\[Xi]", "0"], "\[Prime]",
+         MultilineFunction->None], "[", 
+        RowBox[{"s", " ", "\[Alpha]"}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["4", "7"], " ", "s", " ", "\[Alpha]", " ", 
+       RowBox[{
+        SuperscriptBox[
+         SubscriptBox["\[Xi]", "2"], "\[Prime]",
+         MultilineFunction->None], "[", 
+        RowBox[{"s", " ", "\[Alpha]"}], "]"}]}]}], ")"}], " ", "\[Epsilon]"}],
+    "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "\[Epsilon]", "]"}], "2"],
+    SeriesData[$CellContext`\[Epsilon], 0, {}, 0, 2, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`\[Epsilon], 0, {
+    Subscript[$CellContext`\[Xi], 2][$CellContext`s $CellContext`\[Alpha]], 
+    Rational[6, 7] 
+     Subscript[$CellContext`\[Xi], 2][$CellContext`s $CellContext`\[Alpha]] + 
+    2 $CellContext`s $CellContext`\[Alpha] Derivative[1][
+       Subscript[$CellContext`\[Xi], 
+        0]][$CellContext`s $CellContext`\[Alpha]] + 
+    Rational[4, 7] $CellContext`s $CellContext`\[Alpha] Derivative[1][
+       Subscript[$CellContext`\[Xi], 
+        2]][$CellContext`s $CellContext`\[Alpha]]}, 0, 2, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.5522469653452787`*^9, 3.55224766368961*^9, 
+  3.552248451730131*^9, 3.5522486074976482`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{546, Automatic}, {Automatic, 68}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 149, 3, 26, "Text"],
+Cell[CellGroupData[{
+Cell[731, 27, 96, 1, 67, "Section"],
+Cell[CellGroupData[{
+Cell[852, 32, 202, 4, 24, "Subsubsection"],
+Cell[1057, 38, 469, 11, 41, "Text"],
+Cell[1529, 51, 156, 3, 27, "Input"],
+Cell[1688, 56, 284, 7, 27, "Input"],
+Cell[1975, 65, 569, 12, 30, "Input"],
+Cell[2547, 79, 626, 15, 33, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3210, 99, 215, 4, 24, "Subsubsection"],
+Cell[3428, 105, 1053, 26, 33, "Input"],
+Cell[CellGroupData[{
+Cell[4506, 135, 164, 3, 27, "Input"],
+Cell[4673, 140, 746, 20, 33, "Output"]
+}, Open  ]],
+Cell[5434, 163, 674, 18, 27, "Input"],
+Cell[CellGroupData[{
+Cell[6133, 185, 190, 4, 27, "Input"],
+Cell[6326, 191, 713, 21, 33, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7088, 218, 185, 4, 24, "Subsubsection"],
+Cell[7276, 224, 266, 7, 26, "Text"],
+Cell[7545, 233, 676, 21, 27, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8258, 259, 115, 1, 24, "Subsubsection"],
+Cell[8376, 262, 199, 4, 26, "Text"],
+Cell[8578, 268, 548, 14, 27, "Input"],
+Cell[CellGroupData[{
+Cell[9151, 286, 427, 9, 27, "Input"],
+Cell[9581, 297, 1396, 37, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11014, 339, 332, 8, 27, "Input"],
+Cell[11349, 349, 1742, 45, 46, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
