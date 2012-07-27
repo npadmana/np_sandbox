@@ -17,7 +17,7 @@ cmass <- (bitAnd(spall$TARGET1, flagval) > 0) & (!spall$is.CMASS)
 
 arr1 <- spall[(lowz|cmass) & (spall$CHUNK != "boss1") & (spall$CHUNK != "boss2") & 
 				(spall$SPECPRIMARY==1) & (spall$ZWARNING_NOQSO==0), 
-		 list(PLATE, MJD, FIBERID, PLUG_RA, PLUG_DEC, RUN, FIELD, CAMCOL, ID, is.LOWZ, is.CMASS, TARGET1)]
+		 list(CHUNK, PLATE, MJD, FIBERID, PLUG_RA, PLUG_DEC, RUN, FIELD, CAMCOL, ID, is.LOWZ, is.CMASS, TARGET1)]
  
 
 write.table(arr1, "cache/parejko.txt", row.names=FALSE) 
