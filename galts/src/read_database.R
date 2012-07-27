@@ -1,7 +1,6 @@
+library("ProjectTemplate")
+load.project()
 library(RPostgreSQL)
-library(data.table)
-source('~/myWork/nputils/R/BOSS/common.R')
-source('~/myWork/nputils/R/BOSS/galtarget.R')
 
 # Set up database driver and connection
 DBSetup <- function () {
