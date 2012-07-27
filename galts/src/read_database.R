@@ -38,7 +38,7 @@ Make.Sample.Spall <- function(fn) {
   dbDisconnect(driv$conn)
 }
 
-Make.Sample.Spall("spall.xdr")
+Make.Sample.Spall("data/spall.rda")
 
 
 
