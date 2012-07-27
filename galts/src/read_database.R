@@ -19,6 +19,7 @@ Get.Sample.SpAll <- function(conn, galtype=c("GAL_CMASS")) {
   wherestr <- sprintf('(%s > 0)', colstr)
   script <- paste('select "PLATE", "MJD", "FIBERID", "CHUNK", "Z_NOQSO", "ZWARNING_NOQSO", ',
                   '"PLUG_RA", "PLUG_DEC", "BOSS_TARGET1", ',
+				  '"RUN", "CAMCOL","FIELD", "ID",', 
                   ' "CMODELFLUX_2", "CMODELFLUX_3", "CMODELFLUX_4", "CMODELFLUX_5", ',
                   ' "MODELFLUX_2",  "MODELFLUX_3",  "MODELFLUX_4", "MODELFLUX_5", ',
                   ' "EXTINCTION_2", "EXTINCTION_3", "EXTINCTION_4", "EXTINCTION_5", ',
@@ -26,6 +27,7 @@ Get.Sample.SpAll <- function(conn, galtype=c("GAL_CMASS")) {
                   ' "SPECPRIMARY", ',
                   selectstr,
                   'from spall_v5_4_45_core natural join spall_v5_4_45_flux',
+				  'natural join spall_v5_4_45_photo', 
                   'where ',wherestr, sep=" ")
   return(data.table(dbGetQuery(conn, script)))
 }
