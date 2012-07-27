@@ -1,6 +1,6 @@
 data_loading: on
 cache_loading: on
-munging: on
+munging: off
 logging: off
 load_libraries: on
 libraries: data.table, ggplot2

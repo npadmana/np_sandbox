@@ -82,14 +82,16 @@ boss.SelectLOWZ <- function(data) {
   # Result : 
   #    A new data frames with is.LOWZ appended to it.
   #
-  within(data, {
+  tmp <- with(data, {
     is.LOWZ <- rcmodel < (13.5 + cpar/0.3)
     is.LOWZ <- is.LOWZ & (abs(cperp) < 0.2)
     is.LOWZ <- is.LOWZ & (rcmodel > 16) & (rcmodel < 19.6)
     is.LOWZ <- is.LOWZ & ((rpsf - rcmodel) > 0.3)
     # Eliminate NA
     is.LOWZ[!is.finite(is.LOWZ)] <- FALSE
+	is.LOWZ
   })
+  data [, is.LOWZ := tmp]
 }
 
 boss.SelectSPARSE <- function(data) {
