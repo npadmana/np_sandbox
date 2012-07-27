@@ -3,7 +3,6 @@
 	<name>Rgalts</name>
 	<comment></comment>
 	<projects>
-		<project>nputils</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
