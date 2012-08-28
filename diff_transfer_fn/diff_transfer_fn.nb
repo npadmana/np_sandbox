@@ -38,6 +38,22 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"zvals", " ", "--"}], " ", "hardcoded", " ", "is", " ", "not", 
+    " ", "ideal"}], ",", " ", 
+   RowBox[{"but", " ", "why", " ", "not", "??"}]}], " ", "*)"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"zvals", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.04", ",", " ", "0.03", ",", " ", "0.02", ",", " ", "0.01", ",", " ", 
+     "0.00"}], "}"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
   RowBox[{"Set", " ", "the", " ", "file", " ", "name", " ", "list"}], " ", 
   "*)"}]], "Input",
  CellChangeTimes->{{3.555172448874003*^9, 3.555172458540721*^9}}],
@@ -80,7 +96,28 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"5", ",", "692", ",", "7"}], "}"}]], "Output"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Normalization", "Subsection"],
+
+Cell["\<\
+The CAMB transfer functions are normalized to make it easy to compute power \
+spectra, but this is inconvenient when computing derivatives of transfer \
+functions. So let us remove and store the normalizations. I\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"norms", " ", "=", " ", 
+  RowBox[{"transfers", "[", 
+   RowBox[{"[", 
+    RowBox[{"All", ",", " ", "1", ",", " "}]}]}]}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
@@ -1658,6 +1695,7 @@ Dqh8qzn6OQiZsHq7UF0e/D+mGN21
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.555106460147451*^9, 3.5551064767377863`*^9}}]
+}, Open  ]]
 }, Open  ]]
 },
 WindowSize->{843, 720},
