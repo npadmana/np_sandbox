@@ -72,23 +72,15 @@ Cell[BoxData[
     " ", "fnames"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.555172682563702*^9, 3.555172703240106*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"t0", " ", "=", " ", 
-   RowBox[{"Import", "[", 
-    RowBox[{"\"\<test_transfer_z0.dat\>\"", ",", " ", "\"\<Table\>\""}], 
-    "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.555106035664603*^9, 3.555106064717079*^9}}],
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"t4", " ", "=", " ", 
-   RowBox[{"Import", "[", 
-    RowBox[{"\"\<test_transfer_z4.dat\>\"", ",", " ", "\"\<Table\>\""}], 
-    "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.555106139874268*^9, 3.5551061633990927`*^9}, {
-  3.5551070627123213`*^9, 3.5551070777180767`*^9}, {3.5551071258787518`*^9, 
-  3.555107140915493*^9}}],
+ RowBox[{"Dimensions", "[", "transfers", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", "692", ",", "7"}], "}"}]], "Output"]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
