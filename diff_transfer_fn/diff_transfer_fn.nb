@@ -244,7 +244,16 @@ Cell[BoxData[
      ",", " ", 
      RowBox[{
      "we", " ", "want", " ", "the", " ", "derivative", " ", "wrt", " ", 
-      "t"}]}], ")"}]}]}]], "Input"],
+      "t"}]}], ")"}]}]}]], "Input",
+ EmphasizeSyntaxErrors->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"z", "[", "t_", "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"a", "[", "t", "]"}]}], " ", "-", " ", "1"}]}], ";"}]], "Input"],
 
 Cell[CellGroupData[{
 
@@ -896,12 +905,15 @@ eEooNl+cd6hVj45C/2zGL5o3BOuYU6fUetBRdPbuT5vwDMGM33/SfBNPR9n3
 }, Open  ]],
 
 Cell[BoxData[
- RowBox[{
+ RowBox[{"(*", " ", 
   RowBox[{
-   RowBox[{"z", "[", "t_", "]"}], " ", ":=", " ", 
    RowBox[{
-    RowBox[{"1", "/", 
-     RowBox[{"a", "[", "t", "]"}]}], " ", "-", " ", "1"}]}], ";"}]], "Input"]
+    RowBox[{"We", "'"}], "ll", " ", "probably", " ", "want", " ", "to", " ", 
+    "remove", " ", "some", " ", "of", " ", "the", " ", "noise", " ", "in", 
+    " ", "this"}], ",", " ", 
+   RowBox[{
+   "but", " ", "this", " ", "should", " ", "be", " ", "fine", " ", "to", " ", 
+    "begin"}]}], " ", "*)"}]], "Input"]
 }, Open  ]]
 }, Open  ]]
 },
