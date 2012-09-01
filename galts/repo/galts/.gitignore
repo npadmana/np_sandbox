@@ -1,0 +1,9 @@
+.project
+.texlipse
+.MathematicaResources
+.settings
+
+
+tex/galts.pdf
+tex/tmp
+tex/galts.synctex.gz
