@@ -7,3 +7,7 @@ data
 
 # R specific stuff
 .Rhistory
+
+
+# Ignore the nested SVN repo
+repo/galts/.svn
