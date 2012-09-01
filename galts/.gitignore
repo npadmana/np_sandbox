@@ -11,3 +11,4 @@ data
 
 # Ignore the nested SVN repo
 repo/galts/.svn
+repo/bosstarget/.svn
