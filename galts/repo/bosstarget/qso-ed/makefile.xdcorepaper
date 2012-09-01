@@ -1,0 +1,78 @@
+IDL=idl
+ECHO=echo
+
+all: xdcore_count.fits xdcore_first.fits xdcore_knownqsostar.fits \
+	first_hist.ps first_hist.ps known_histqso.ps \
+	qso_radec.ps star_radec.ps \
+	xdcore_richards.fits richards_hist.ps \
+	numcounts.ps \
+	efficiency.ps \
+	consistency.ps \
+	comparelike_ts.ps \
+	xdqso_relflux_fits_qsolowz.fits \
+	xdqso_relflux_fits_qsomidz.fits \
+	xdqso_relflux_fits_qsohiz.fits \
+	xdqso_relflux_fits_star.fits \
+	target_color_qso-ug-gr.ps \
+	target_color_star-ug-gr.ps \
+	colorz_colorbar.ps
+
+colorz_colorbar.ps: colorz_colorbar.pro
+	$(ECHO) "colorz_colorbar, '$@'" | $(IDL)
+
+target_color_qso-ug-gr.ps: plot_xdcore_colors.pro overplot_qso_colors.pro
+	$(ECHO) "plot_xdcore_colors, outfile='target_color_qso', savefile='qso_colors.sav', cut=0.8, fraction=0.1" | $(IDL)
+
+target_color_star-ug-gr.ps: plot_xdcore_colors.pro overplot_stellar_colors.pro
+	$(ECHO) "plot_xdcore_colors, outfile='target_color_star', savefile='star_colors.sav', cut=0.05, /less, fraction=0.0025" | $(IDL)
+
+xdcore_count.fits: count_qso_xdcore.pro
+	$(ECHO) "count_qso_xdcore, outfile='$@'" | $(IDL)
+
+xdcore_knownqsostar.fits: xdcore_knownqso.pro
+	$(ECHO) "xdcore_knownqso, '../../data/knownquasarstar.060910.fits','$@',maxd=1.5/3600." | $(IDL)
+
+xdcore_first.fits: xdcore_knownqso.pro
+	$(ECHO) "xdcore_knownqso, '../../data/first_08jul16.fits','$@',maxd=0.5/3600." | $(IDL)
+
+xdcore_richards.fits: xdcore_knownqso.pro
+	$(ECHO) "xdcore_knownqso, '$(BOVYQSOEDDATA)/nbckde_dr6_uvx_highz_faint_qsos_021908.cat.rasort.match.hennawi.072408.fits','$@',maxd=2./3600." | $(IDL)
+
+first_hist.ps: plot_xdcore_first.pro xdcore_first.fits
+	$(ECHO) "plot_xdcore_first, 'xdcore_first.fits', 'first','first.sav'" | $(IDL)
+
+richards_hist.ps: plot_xdcore_richards.pro xdcore_richards.fits
+	$(ECHO) "plot_xdcore_richards, 'xdcore_richards.fits', 'richards','richards.sav'" | $(IDL)
+
+known_histqso.ps: plot_xdcore_knownqsostar.pro
+	$(ECHO) "plot_xdcore_knownqsostar, 'xdcore_knownqsostar.fits','known','known.sav'" | $(IDL)
+
+qso_radec.ps: plot_xdcore_radec_qsostar.pro
+	$(ECHO) "plot_xdcore_radec_qsostar, outfile='$@', savefile='qso_radec.sav', histfile='qso_radec_hist.sav', cut=0.5" | $(IDL)
+
+star_radec.ps: plot_xdcore_radec_qsostar.pro
+	$(ECHO) "plot_xdcore_radec_qsostar, outfile='$@', savefile='star_radec.sav', cut=0.05, /less, histfile='star_radec_hist.sav'" | $(IDL)
+
+all_radec.ps: plot_xdcore_radec_qsostar.pro
+	$(ECHO) "plot_xdcore_radec_qsostar, outfile='$@', savefile='all_radec.sav', cut=1D-14" | $(IDL)
+
+numcounts.ps: plot_numcounts.pro
+	$(ECHO) "plot_numcounts, '$@'" | $(IDL)
+
+efficiency.ps: plot_efficiency.pro
+	$(ECHO) "plot_efficiency, 'efficiency', /boss11" | $(IDL)
+
+consistency.ps: plot_pqso_consistency.pro
+	$(ECHO) "plot_pqso_consistency, '$@',/boss11" | $(IDL)
+
+comparelike_ts.ps: compare_xdcore_like.pro
+	$(ECHO) "compare_xdcore_like, 'comparelike',/boss11" | $(IDL)
+
+xdqso_relflux_fits_qsolowz.fits: convert_xdsavs_fits.pro
+	$(ECHO) "convert_xdsavs_fits, '$@', /qso, /lowz" | $(IDL)
+xdqso_relflux_fits_qsomidz.fits: convert_xdsavs_fits.pro
+	$(ECHO) "convert_xdsavs_fits, '$@', /qso, /bossz" | $(IDL)
+xdqso_relflux_fits_qsohiz.fits: convert_xdsavs_fits.pro
+	$(ECHO) "convert_xdsavs_fits, '$@', /qso" | $(IDL)
+xdqso_relflux_fits_star.fits: convert_xdsavs_fits.pro
+	$(ECHO) "convert_xdsavs_fits, '$@'" | $(IDL)

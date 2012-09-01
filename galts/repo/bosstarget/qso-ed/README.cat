@@ -1,0 +1,23 @@
+Steps to prepare a catalog
+==========================
+
+- Run everything through XDQSO/XDQSOz with /galex, /ukidss, /dr9, /clean using 
+
+	run_xdqso_dr8.pro
+
+- Then gather the catalog and match to the sweeps to get sweeps-info (such as psfflux etc.)
+
+	xdqsoz_create_catalog.pro
+
+- Then add the XDQSOz tags (photo-zs)
+
+	xdqsoz_addxdqsoztags.pro
+
+- Then you might want to add Adam's masking info
+
+	add_dr8_mask_info.pro
+
+- And you might want to calculate an extra P(zmin < z < zmax QSO)
+
+	xdqsoz_calc_extraprob.pro
+

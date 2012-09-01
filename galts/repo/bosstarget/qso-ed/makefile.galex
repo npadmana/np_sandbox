@@ -1,0 +1,92 @@
+IDL=idl
+ECHO=/bin/echo
+MV=mv
+PLOTDIR=/home/users/jb2777/sdss_qsos/out/galex
+MINSNR=2
+
+all: everything_snr.ps \
+	everything_snr_18.0_i_19.0.ps \
+	everything_snr_19.0_i_20.0.ps \
+	everything_snr_20.0_i_21.0.ps \
+	everything_snr_21.0_i_22.0.ps \
+	everything_ug_nu.ps \
+	everything_18.0_i_19.0_ug_nu.ps \
+	everything_19.0_i_20.0_ug_nu.ps \
+	everything_20.0_i_21.0_ug_nu.ps \
+	everything_21.0_i_22.0_ug_nu.ps \
+	qso_ug_nu.ps \
+	qso_hiz_ug_nu.ps \
+	qso_lowz_ug_nu.ps \
+	qso_snr.ps \
+	star_ug_nu.ps
+
+
+everything_snr.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@'" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+
+qso_snr.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@',galexfilename='$(BOVYQSOEDDATA)/sdss_qsos_sdss_galex.fits'" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+
+everything_snr_18.0_i_19.0.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@',imin=18.0,imax=19.0" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+
+everything_snr_19.0_i_20.0.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@',imin=19.0,imax=20.0" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+
+everything_snr_20.0_i_21.0.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@',imin=20.0,imax=21.0" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+
+everything_snr_21.0_i_22.0.ps: galex_cumul_snr.pro
+	$(ECHO) "galex_cumul_snr, plotfilename='$@',imin=21.0,imax=22.0" | $(IDL)
+	$(MV) $@ $(PLOTDIR)
+
+everything_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='everything',/hoggscatter,minsnr=$(MINSNR)" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+everything_18.0_i_19.0_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='everything_18.0_i_19.0',imin=18.0,imax=19.0,/hoggscatter" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+everything_19.0_i_20.0_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='everything_19.0_i_20.0',imin=19.0,imax=20.0,/hoggscatter" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+everything_20.0_i_21.0_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='everything_20.0_i_21.0',imin=20.0,imax=21.0,/hoggscatter" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+everything_21.0_i_22.0_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='everything_21.0_i_22.0',imin=21.0,imax=22.0,/hoggscatter" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+qso_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='qso', galexfilename='$(BOVYQSOEDDATA)/sdss_qsos_sdss_galex.fits', coadddatafilename='$(BOVYQSOEDDATA)/sdss_qsos.fits',/hoggscatter,minsnr=$(MINSNR)" | $(IDL)
+	$(MV) $@ $(PLOTDIR)
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+qso_hiz_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='qso_hiz', zmin=2.2, galexfilename='$(BOVYQSOEDDATA)/sdss_qsos_sdss_galex.fits', coadddatafilename='$(BOVYQSOEDDATA)/sdss_qsos.fits',/hoggscatter" | $(IDL)
+	$(MV) $@ $(PLOTDIR)
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+qso_lowz_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='qso_lowz', zmax=2.2, galexfilename='$(BOVYQSOEDDATA)/sdss_qsos_sdss_galex.fits', coadddatafilename='$(BOVYQSOEDDATA)/sdss_qsos.fits',/hoggscatter,minsnr=$(MINSNR)" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+
+star_ug_nu.ps: galex_color_color.pro
+	$(ECHO) "galex_color_color, basefilename='star',/hoggscatter,minsnr=$(MINSNR),/star" | $(IDL)
+	$(MV) $@ $(PLOTDIR)	
+	$(MV) $(subst ug_nu,nu_fn,$@) $(PLOTDIR)
+

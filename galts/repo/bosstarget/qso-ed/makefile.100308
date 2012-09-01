@@ -1,0 +1,23 @@
+ECHO=/bin/echo
+IDL=idl
+OUTDIR=../100308_color_all/
+NSAMPLES=60000
+all: $(OUTDIR)all_data_gr_ug.ps
+
+$(OUTDIR)all_data_gr_ug.ps: plot_all_data.pro prep_data.pro
+	$(ECHO) 'plot_all_data,basefilename="$(OUTDIR)all_data_",nsamples=$(NSAMPLES)' | $(IDL)
+
+$(OUTDIR)coadd_data_gr_ug.ps: plot_all_data.pro prep_data.pro
+	$(ECHO) 'plot_all_data,basefilename="$(OUTDIR)coadd_data_",/coadd,nsamples=$(NSAMPLES)' | $(IDL)
+#	$(ECHO) 'plot_all_data,basefilename="$(OUTDIR)coadd_data_",/coadd' | $(IDL)
+
+$(OUTDIR)dc_colordist_%_gr_ug.ps: deconvolve_all_colordist.pro plot_deconvolved_all_colordist.pro
+	$(ECHO) "deconvolve_all_colordist, savefilename='$(@D)/all_colordist_$(subst _gr_ug.ps,,$(subst dc_colordist_,,$(@F))).sav',ngauss=$(subst _gr_ug.ps,,$(subst $(@D)/dc_colordist_,,$@))" | $(IDL)
+	$(ECHO) "plot_deconvolved_all_colordist, savefilename='$(@D)/all_colordist_$(subst _gr_ug.ps,,$(subst dc_colordist_,,$(@F))).sav', basefilename='$(@D)/dc_colordist_$(subst _gr_ug.ps,,$(subst dc_colordist_,,$(@F)))_'" | $(IDL)
+	$(ECHO) "plot_deconvolved_all_colordist, savefilename='$(@D)/all_colordist_$(subst _gr_ug.ps,,$(subst dc_colordist_,,$(@F))).sav', basefilename='$(@D)/dc_colordist_sampling_$(subst _gr_ug.ps,,$(subst dc_colordist_,,$(@F)))_',/sampling,nsamples=$(NSAMPLES)" | $(IDL)
+
+$(OUTDIR)diagnostics_noise_ug.ps: plot_diagnostics.pro prep_data.pro
+	$(ECHO) 'plot_diagnostics,basefilename="$(OUTDIR)diagnostics"' | $(IDL)
+
+$(OUTDIR)coadd_data_%_gr_ug.ps: plot_all_data_magbin.pro #should be like /coadd_data_21.0_i_21.2_gr_ug.ps
+	$(ECHO) "plot_all_data_magbin, '$(subst _gr_ug.ps,,$(subst $(@D)/coadd_data_,,$@))', basefilename='$(OUTDIR)coadd_data_',/coadd,/hoggscatter" | $(IDL)

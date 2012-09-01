@@ -1,0 +1,99 @@
+ECHO=/bin/echo
+IDL=idl
+TEXDIR=../out/tex/
+PLOTDIR=../out/plot/
+SAVEDIR=../out/dc/
+SPLITNMERGE=0
+GALEX=0
+UKIDSS=0
+ZFOUR=0
+FITZ=0
+RESAMPLE=1
+POINT9=0
+NOMAGLABEL=1
+
+#Low z
+$(PLOTDIR)dc_qso_lowz_fluxdist_%_g_u.ps: deconvolve_qso.pro plot_deconvolved_all.pro #Should be like $(PLOTDIR)dc_fluxdist_17.8_i_18.0_15_g_u.ps
+	$(ECHO) "deconvolve_qso, magbin='$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav',/lowz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_lowz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/hoggscatter,/rescaled,/qso,/lowz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_lowz_fluxdist_resample_$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/resampledata,magbin='$(subst _g_u.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/lowz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+endif
+
+$(PLOTDIR)dc_qso_lowz_fluxdist_%_gr_ug.ps: deconvolve_qso.pro plot_deconvolved_all.pro
+	$(ECHO) "deconvolve_qso, magbin='$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav',/lowz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_lowz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))_',/fluxes,/hoggscatter,/rescaled,/qso,/lowz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_lowz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_lowz_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))_',/fluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_qso_lowz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/lowz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+endif
+
+$(PLOTDIR)qso_data_lowz_%_g_u.ps: plot_qso_data_magbin.pro #should be like /qso_data_21.0_i_21.2_g_u.ps
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_lowz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_lowz_',/plotfluxes,/hoggscatter,/lowz, galex=$(GALEX),zfour=$(ZFOUR),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_lowz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_lowz_',/hoggscatter, /lowz, galex=$(GALEX),zfour=$(ZFOUR),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+
+#BOSS z
+$(PLOTDIR)dc_qso_bossz_fluxdist_%_g_u.ps: deconvolve_qso.pro plot_deconvolved_all.pro #Should be like $(PLOTDIR)dc_fluxdist_17.8_i_18.0_15_g_u.ps
+	$(ECHO) "deconvolve_qso, magbin='$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav',/bossz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_bossz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/hoggscatter,/rescaled,/qso,/bossz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_bossz_fluxdist_resample_$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/resampledata,magbin='$(subst _g_u.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/bossz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+endif
+
+$(PLOTDIR)dc_qso_bossz_fluxdist_%_gr_ug.ps: deconvolve_qso.pro plot_deconvolved_all.pro
+	$(ECHO) "deconvolve_qso, magbin='$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav',/bossz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_bossz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))_',/fluxes,/hoggscatter,/rescaled,/qso,/bossz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_bossz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_bossz_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))_',/fluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_qso_bossz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/bossz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+endif
+
+$(PLOTDIR)qso_data_bossz_%_g_u.ps: plot_qso_data_magbin.pro #should be like /qso_data_21.0_i_21.2_g_u.ps
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_bossz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_bossz_',/plotfluxes,/hoggscatter,/bossz, galex=$(GALEX),zfour=$(ZFOUR),ukidss=$(UKIDSS)" | $(IDL)
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_bossz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_bossz_',/hoggscatter, /bossz, galex=$(GALEX),zfour=$(ZFOUR),ukidss=$(UKIDSS)" | $(IDL)
+
+#All z
+$(PLOTDIR)dc_qso_allz_fluxdist_%_g_u.ps: deconvolve_qso.pro plot_deconvolved_all.pro #Should be like $(PLOTDIR)dc_fluxdist_17.8_i_18.0_15_g_u.ps
+	$(ECHO) "deconvolve_qso, magbin='$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav',/allz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_allz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/hoggscatter,/rescaled,/qso,/allz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_allz_fluxdist_resample_$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/resampledata,magbin='$(subst _g_u.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/allz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+endif
+
+$(PLOTDIR)dc_qso_allz_fluxdist_%_gr_ug.ps: deconvolve_qso.pro plot_deconvolved_all.pro
+	$(ECHO) "deconvolve_qso, magbin='$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav',/allz,/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_allz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))_',/fluxes,/hoggscatter,/rescaled,/qso,/allz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_allz_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_allz_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))_',/fluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_qso_allz_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,/allz,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+endif
+
+$(PLOTDIR)qso_data_allz_%_g_u.ps: plot_qso_data_magbin.pro #should be like /qso_data_21.0_i_21.2_g_u.ps
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_allz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_allz_',/plotfluxes,/hoggscatter,/allz, galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_allz_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_allz_',/hoggscatter, /allz, galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS),nomaglabel=$(NOMAGLABEL)" | $(IDL)
+
+#z>2.15
+$(PLOTDIR)dc_qso_fluxdist_%_g_u.ps: deconvolve_qso.pro plot_deconvolved_all.pro #Should be like $(PLOTDIR)dc_fluxdist_17.8_i_18.0_15_g_u.ps
+	$(ECHO) "deconvolve_qso, magbin='$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav',/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/hoggscatter,/rescaled,/qso,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_fluxdist_resample_$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/resampledata,magbin='$(subst _g_u.ps,,$(subst dc_qso_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+endif
+
+$(PLOTDIR)dc_qso_fluxdist_%_gr_ug.ps: deconvolve_qso.pro plot_deconvolved_all.pro
+	$(ECHO) "deconvolve_qso, magbin='$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F)))',savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav',/rescale,/initprevbin,splitnmerge=$(SPLITNMERGE),uv=$(GALEX),nir=$(UKIDSS),zfour=$(ZFOUR),fitz=$(FITZ),pointnine=$(POINT9)" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F)))_',/fluxes,/hoggscatter,/rescaled,/qso,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+ifeq ($(RESAMPLE),1)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(SAVEDIR)dc_qso_fluxdist_$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_qso_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F)))_',/fluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_qso_fluxdist_,,$(@F)))',/hoggscatter,/rescaled,/qso,galex=$(GALEX),zfour=$(ZFOUR),fitz=$(FITZ),ukidss=$(UKIDSS)" | $(IDL)
+endif
+
+$(PLOTDIR)qso_data_%_g_u.ps: plot_qso_data_magbin.pro #should be like /qso_data_21.0_i_21.2_g_u.ps
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_',/plotfluxes,/hoggscatter, galex=$(GALEX),zfour=$(ZFOUR),ukidss=$(UKIDSS)" | $(IDL)
+	$(ECHO) "plot_qso_data_magbin, '$(subst _g_u.ps,,$(subst qso_data_,,$(@F)))', basefilename='$(PLOTDIR)qso_data_',/hoggscatter,galex=$(GALEX),zfour=$(ZFOUR),ukidss=$(UKIDSS)" | $(IDL)
+
+
+%.eps: %.ps
+	cp $< $(@)_tmp
+	echo "1,\$$s/%%BoundingBox: 36 126 576 666/%%BoundingBox: 36 146 513 611/g" > $(@)_edcmd
+	echo "w" >> $(@)_edcmd
+	ed $< < $(@)_edcmd
+	cp $< $@
+	cp $(@)_tmp $< 
+	rm $(@)_edcmd $(@)_tmp

@@ -1,0 +1,9 @@
+.PRECIOUS: %.dvi
+
+%.pdf: %.dvi
+	dvipdf $<
+
+%.dvi: %.tex
+	latex $<
+	bash -c " ( grep Rerun $*.log && latex $< ) || echo noRerun "
+	bash -c " ( grep Rerun $*.log && latex $< ) || echo noRerun "

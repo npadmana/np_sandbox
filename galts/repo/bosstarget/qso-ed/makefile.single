@@ -1,0 +1,18 @@
+ECHO=/bin/echo
+IDL=idl
+OUTDIR=100831_flux_all/
+
+$(OUTDIR)dc_fluxdist_%_gr_ug.ps: deconvolve_all.pro plot_deconvolved_all.pro
+	$(ECHO) "deconvolve_all, magbin='$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))',savefilename='$(@D)/all_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F))).sav',/rescale" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(@D)/all_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))_',/fluxes,/rescaled,/hoggscatter" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(@D)/all_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/hoggscatter,/rescaled" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(@D)/all_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))_',/fluxes,/plotfluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))',/hoggscatter,/rescaled" | $(IDL)
+	$(ECHO) "plot_deconvolved_all, savefilename='$(@D)/all_fluxdist_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F))).sav', basefilename='$(@D)/dc_fluxdist_resample_$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))_',/fluxes,/resampledata,magbin='$(subst _gr_ug.ps,,$(subst dc_fluxdist_,,$(@F)))',/hoggscatter,/rescaled" | $(IDL)
+
+$(OUTDIR)coadd_data_%_g_u.ps: plot_all_data_magbin.pro #should be like /coadd_data_21.0_i_21.2_gr_ug.ps
+	$(ECHO) "plot_all_data_magbin, '$(subst _g_u.ps,,$(subst $(@D)/coadd_data_,,$@))', basefilename='$(OUTDIR)coadd_data_',/coadd,/plotfluxes,/hoggscatter" | $(IDL)
+	$(ECHO) "plot_all_data_magbin, '$(subst _g_u.ps,,$(subst $(@D)/coadd_data_,,$@))', basefilename='$(OUTDIR)coadd_data_',/coadd, /hoggscatter" | $(IDL)
+
+$(OUTDIR)single_data_%_g_u.ps: plot_all_data_magbin.pro #should be like /coadd_data_21.0_i_21.2_gr_ug.ps
+	$(ECHO) "plot_all_data_magbin, '$(subst _g_u.ps,,$(subst $(@D)/single_data_,,$@))', basefilename='$(OUTDIR)single_data_',/plotfluxes,/hoggscatter" | $(IDL)
+	$(ECHO) "plot_all_data_magbin, '$(subst _g_u.ps,,$(subst $(@D)/single_data_,,$@))', basefilename='$(OUTDIR)single_data_',/hoggscatter" | $(IDL)

@@ -1,0 +1,85 @@
+IDL=/usr/local/bin/idl
+ECHO=echo
+
+all: predict_dr7qso_sdss.ps \
+	predict_dr7qso_galex.ps \
+	predict_dr7qso_ukidss.ps \
+	predict_dr7qso_galex_ukidss.ps \
+	predict_altqso_sdss.ps \
+	predict_altqso_galex.ps \
+	predict_altqso_ukidss.ps \
+	predict_altqso_galex_ukidss.ps \
+	zspeczphot_dr7qso.ps \
+	zspeczphot_testqso.ps \
+	zspeczphot_altqso.ps \
+	xdqsoz_redshift_prior.ps \
+	xdqsoz_redshift_prior_R06.ps \
+	xdqsoz_redshift_prior_R06_alt.ps \
+	xdqsoz_compare2xdqso.ps \
+	xdqsoz_compare2xdqso_efficiency.ps \
+	xdqsoz_allpeaks.ps \
+	xdqsoz_allpeaks_intprob.ps \
+	xdqsoz_galexukidss_snr.ps \
+	xdqsoz_testloglike.ps \
+	xdqsoz_targetvalue.ps
+
+xdqsoz_consistency.ps: xdqsoz_plot_pqso_consistency.pro
+	$(ECHO) "xdqsoz_plot_pqso_consistency, '$@'" | $(IDL)
+
+xdqsoz_targetvalue.ps: xdqsoz_plot_targetvalue.pro
+	$(ECHO) "xdqsoz_plot_targetvalue, '$@'" | $(IDL)
+
+xdqsoz_testloglike.ps: xdqsoz_plot_testloglike.pro
+	$(ECHO) "xdqsoz_plot_testloglike, '$@'" | $(IDL)
+
+xdqsoz_galexukidss_snr.ps: xdqsoz_plot_galexukidss_snr.pro
+	$(ECHO) "xdqsoz_plot_galexukidss_snr, '$@'" | $(IDL)
+
+xdqsoz_allpeaks.ps: xdqsoz_plotallpeaks.pro xdqsoz_plotpeaks.pro
+	$(ECHO) "xdqsoz_plotallpeaks, '$@'" | $(IDL)
+xdqsoz_allpeaks_intprob.ps: xdqsoz_plotallpeaks.pro xdqsoz_plotpeaks.pro
+	$(ECHO) "xdqsoz_plotallpeaks, '$@',intprob=0.05" | $(IDL)
+
+xdqsoz_compare2xdqso_efficiency.ps: xdqsoz_compare2xdqso.pro
+	$(ECHO) "xdqsoz_compare2xdqso, '$@',/efficiency" | $(IDL)
+xdqsoz_compare2xdqso.ps: xdqsoz_compare2xdqso.pro
+	$(ECHO) "xdqsoz_compare2xdqso, '$@'" | $(IDL)
+
+xdqsoz_redshift_prior.ps: xdqsoz_plot_redshiftprior.pro
+	$(ECHO) "xdqsoz_plot_redshiftprior, '$@'" | $(IDL)
+xdqsoz_redshift_prior_R06.ps: xdqsoz_plot_redshiftpriordiff.pro
+	$(ECHO) "xdqsoz_plot_redshiftpriordiff, '$@', second='R06'" | $(IDL)
+xdqsoz_redshift_prior_R06_alt.ps: xdqsoz_plot_redshiftpriordiffalt.pro
+	$(ECHO) "xdqsoz_plot_redshiftpriordiffalt, '$@', second='R06',/ylog" | $(IDL)
+
+zspeczphot_altqso.ps: xdqsoz_plotaltqso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotaltqso_zspeczphot,plotfile='$@',/hoggscatter" | $(IDL)
+zspeczphot_dr7qso.ps: xdqsoz_plotdr7qso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotdr7qso_zspeczphot,plotfile='$@',/hoggscatter" | $(IDL)
+zspeczphot_testqso.ps: xdqsoz_plotdr7qso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotdr7qso_zspeczphot,plotfile='$@',/hoggscatter,/testqso" | $(IDL)
+
+zspeczphot_altqso_intprob.ps: xdqsoz_plotaltqso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotaltqso_zspeczphot,plotfile='$@',/hoggscatter,intprob=0.05" | $(IDL)
+zspeczphot_dr7qso_intprob.ps: xdqsoz_plotdr7qso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotdr7qso_zspeczphot,plotfile='$@',/hoggscatter,intprob=0.05" | $(IDL)
+zspeczphot_testqso_intprob.ps: xdqsoz_plotdr7qso_zspeczphot.pro xdqsoz_plotzspeczphot.pro
+	$(ECHO) "xdqsoz_plotdr7qso_zspeczphot,plotfile='$@',/hoggscatter,/testqso,intprob=0.05" | $(IDL)
+
+predict_dr7qso_sdss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 243, plotfile='$@',dump='xdqsoz_dr7qso_zpdf_243.fits'" | $(IDL)
+predict_dr7qso_galex.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 7172, plotfile='$@',dump='xdqsoz_dr7qso_zpdf_7172.fits'" | $(IDL)
+predict_dr7qso_ukidss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 1194, plotfile='$@',dump='xdqsoz_dr7qso_zpdf_1194.fits'" | $(IDL)
+predict_dr7qso_galex_ukidss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 868, plotfile='$@',dump='xdqsoz_dr7qso_zpdf_868.fits'" | $(IDL)
+
+predict_altqso_sdss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 34, plotfile='$@',/altqso" | $(IDL)
+predict_altqso_galex.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 6722, plotfile='$@',/altqso" | $(IDL)
+predict_altqso_ukidss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 142, plotfile='$@',/altqso" | $(IDL)
+predict_altqso_galex_ukidss.ps: xdqsoz_plotprediction.pro makefile.xdqsozpaper
+	$(ECHO) "xdqsoz_plotprediction, 6584, plotfile='$@',/altqso" | $(IDL)
