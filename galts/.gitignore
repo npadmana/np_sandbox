@@ -5,6 +5,7 @@ data
 # Eclipse specific stuff
 .project
 
+
 # R specific stuff
 .Rhistory
 
