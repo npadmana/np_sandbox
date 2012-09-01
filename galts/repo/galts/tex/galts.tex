@@ -207,7 +207,27 @@ reported in the flags set by the imaging pipeline. In particular, we require
   NOPROFILE)}
 \end{enumerate}
 
-HIGHLIGHT CHANGE IN RESOLVE, AND HOW DO YOU FIX THIS. 
+Unlike SDSS-I/II, the reduced imaging data for the BOSS survey was mostly in
+place before the start of spectroscopic survey, and the photometry used for
+targeting is the final photometry released by the survey. There are two
+exceptions to this : the imaging in the Southern Galactic Cap was
+completed concurrently with the first spectroscopic observations, and additional
+SEGUE imaging data (taken previously, but not as yet re-reduced with the
+SDSS-III pipelines) were added. While these data mostly covered areas of the sky
+not previously observed, they overlapped existing data at the edges of the
+survey. In some of these areas, the SDSS-III ``resolve'' pipeline determined
+that these data were of higher quality than the previous data and these new data
+were marked as being the primary imaging data. However, some of the BOSS targets
+had been targeted and observed using the original photometry. Rerunning galaxy
+target selection on the new photometry changes the selected targets as
+photometric errors scatter galaxies across the color and magnitude selection
+boundaries. This highlights the fact that the BOSS galaxy samples must be
+properly thought of as a statistical realization. Analyses relying on the
+completeness of the target sample (especially in color) must include the effects 
+of photometric errors. Finally, users attempting to reproduce, alter
+or subsample from the BOSS target selection algorithm should be aware of this
+issue; the DR9 data release makes both the final and targeting photometry
+available and the details on accessing it are discussed in detail there.
 
 
 \subsection{Color Definitions}
@@ -342,6 +362,10 @@ EXPLAIN IFIBER2 CUT.
 
 LIST THE CUTS HERE AND MOTIVATION
 
+\subsection{Commissioning Target Selection}
+
+LIST THE CUTS HERE AND DISCUSS
+
 \subsection{Summary of Target Selection}
 
 We summarize the two target selection algorithms here. The LOWZ targets are
@@ -457,30 +481,6 @@ University of Virginia,
 University of Washington,
 and Yale University.
 
-\appendix
-
-\section{Commissioning Data}
-\label{app:comm}
-
-EXPLAIN THE ORIGINAL COMMISSIONING CUTS (ONLY FOR DATA WE PLAN ON RELEASING). 
-
-
-\section{Changes in Galaxy ``RESOLVE''}
-\label{app:resolve}
-
-DESCRIBE THE CHANGES HERE. DOCUMENT WHEN THE CHANGE HAPPENED, AND HOW THIS 
-GETS SOLVED IN THE DATA RELEASE.
-
-\begin{figure}
-\caption{An Aitoff projection showing the regions of sky where the primary
-objects changed. MAKE THIS FIGURE.}
-\end{figure}
-
-\section{A Bug in the LOWZ Galaxy Selection}
-\label{app:lowzbug}
-
-DESCRIBE THE BUG IN DETAIL. WHAT CUT WAS EXACTLY MADE? WHAT DATA DID IT EFFECT?
-SHOW THE EFFECT ON THE NUMBER DENSITY OF TARGETS. REPEAT HOW ONE CAN AVOID THIS.
 
 
 \end{document}
