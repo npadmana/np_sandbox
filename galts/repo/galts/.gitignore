@@ -7,3 +7,6 @@
 tex/galts.pdf
 tex/tmp
 tex/galts.synctex.gz
+tex/*.aux
+tex/*.log
+tex/*.dvi
