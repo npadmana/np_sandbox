@@ -1,0 +1,2030 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     65540,       2021]
+NotebookOptionsPosition[     64183,       1971]
+NotebookOutlinePosition[     64596,       1989]
+CellTagsIndexPosition[     64553,       1986]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", " ", "d_", ",", " ", "\[Sigma]_"}], "]"}], " ", ":=", 
+  " ", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{"2", "\[Pi]"}]], "\[Sigma]"}]], 
+   RowBox[{"Exp", "[", 
+    RowBox[{"-", 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"d", "-", "x"}], ")"}], "2"], 
+      RowBox[{"2", 
+       SuperscriptBox["\[Sigma]", "2"]}]]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.558702885827402*^9, 3.55870298563664*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"prob", "[", 
+   RowBox[{"d_", ",", " ", "\[Sigma]_", ",", " ", "x0_", ",", " ", 
+    RowBox[{"xtrue_:", "0"}]}], "]"}], " ", "=", " ", 
+  RowBox[{
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "d", ",", "\[Sigma]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "x0"}], ",", "xtrue"}], "}"}]}], "]"}], "/", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "d", ",", "\[Sigma]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"-", "x0"}], ",", " ", "x0"}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.558703026531477*^9, 3.558703142699053*^9}, 
+   3.558703723908375*^9, {3.5587160117845697`*^9, 3.558716027071726*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{"d", "+", "x0"}], 
+     RowBox[{
+      SqrtBox["2"], " ", "\[Sigma]"}]], "]"}], "-", 
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{"d", "-", "xtrue"}], 
+     RowBox[{
+      SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}], 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Erf", "[", 
+     FractionBox[
+      RowBox[{"d", "-", "x0"}], 
+      RowBox[{
+       SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}], "+", 
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{"d", "+", "x0"}], 
+     RowBox[{
+      SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}]]], "Output",
+ CellChangeTimes->{3.558703749928157*^9, 3.5587158085698643`*^9, 
+  3.558716047948883*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"prob", "[", 
+  RowBox[{"d", ",", "\[Sigma]", ",", "x0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.558703190241283*^9, 3.558703196759832*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Erf", "[", 
+     FractionBox["d", 
+      RowBox[{
+       SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}], "+", 
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{"d", "+", "x0"}], 
+     RowBox[{
+      SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}], 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Erf", "[", 
+     FractionBox[
+      RowBox[{"d", "-", "x0"}], 
+      RowBox[{
+       SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}], "+", 
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{"d", "+", "x0"}], 
+     RowBox[{
+      SqrtBox["2"], " ", "\[Sigma]"}]], "]"}]}]]], "Output",
+ CellChangeTimes->{3.558703198688993*^9, 3.5587037500167093`*^9, 
+  3.558715808650231*^9, 3.558716076348477*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"uniftest", "[", 
+    RowBox[{"\[Sigma]_", ",", " ", "x0_", ",", " ", "N_"}], "]"}], ":=", " ", 
+   
+   RowBox[{"Histogram", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"prob", "[", 
+       RowBox[{"#", ",", " ", "\[Sigma]", ",", " ", "x0"}], "]"}], " ", "&"}],
+      " ", "/@", " ", 
+     RowBox[{"RandomVariate", "[", 
+      RowBox[{
+       RowBox[{"NormalDistribution", "[", 
+        RowBox[{"0.0", ",", "\[Sigma]"}], "]"}], ",", "N"}], "]"}]}], "]"}]}],
+   ";"}]], "Input",
+ CellChangeTimes->{{3.558704060646264*^9, 3.558704193452939*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uniftest", "[", 
+  RowBox[{"0.01", ",", " ", "0.1", ",", " ", "10000"}], "]"}]], "Input",
+ CellChangeTimes->{{3.558704195505273*^9, 3.5587042188640203`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+   EdgeForm[Opacity[0.7]], {}, 
+   {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+    EdgeForm[Opacity[0.7]], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0., 0.}, {0.05, 555.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{17.499999999999996`, 
+         35.19714285714285}, {-93.90124624848583, 96.28778676483908}}],
+       StatusArea[#, 555.]& ,
+       TagBoxNote->"555."],
+      StyleBox["555.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[555., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.05, 0.}, {0.1, 500.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{34.19714285714285, 
+         51.8942857142857}, {-75.1527835174356, 96.28778676483908}}],
+       StatusArea[#, 500.]& ,
+       TagBoxNote->"500."],
+      StyleBox["500.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[500., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.1, 0.}, {0.15, 479.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{50.8942857142857, 
+         68.59142857142855}, {-67.99427956558007, 96.28778676483908}}],
+       StatusArea[#, 479.]& ,
+       TagBoxNote->"479."],
+      StyleBox["479.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[479., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.15, 0.}, {0.2, 510.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{67.59142857142855, 
+         85.28857142857142}, {-78.5615949230811, 96.28778676483908}}],
+       StatusArea[#, 510.]& ,
+       TagBoxNote->"510."],
+      StyleBox["510.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[510., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.2, 0.}, {0.25, 517.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{84.28857142857142, 
+         101.98571428571427`}, {-80.94776290703295, 96.28778676483908}}],
+       StatusArea[#, 517.]& ,
+       TagBoxNote->"517."],
+      StyleBox["517.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[517., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.25, 0.}, {0.3, 511.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{100.98571428571427`, 
+         118.68285714285712`}, {-78.90247606364564, 96.28778676483908}}],
+       StatusArea[#, 511.]& ,
+       TagBoxNote->"511."],
+      StyleBox["511.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[511., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.3, 0.}, {0.35, 505.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{117.68285714285712`, 
+         135.37999999999997`}, {-76.85718922025835, 96.28778676483908}}],
+       StatusArea[#, 505.]& ,
+       TagBoxNote->"505."],
+      StyleBox["505.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[505., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.35, 0.}, {0.4, 504.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{134.37999999999997`, 
+         152.07714285714283`}, {-76.51630807969381, 96.28778676483908}}],
+       StatusArea[#, 504.]& ,
+       TagBoxNote->"504."],
+      StyleBox["504.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[504., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.4, 0.}, {0.45, 526.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{151.07714285714283`, 
+         168.7742857142857}, {-84.0156931721139, 96.28778676483908}}],
+       StatusArea[#, 526.]& ,
+       TagBoxNote->"526."],
+      StyleBox["526.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[526., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.45, 0.}, {0.5, 500.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{167.7742857142857, 
+         185.47142857142853`}, {-75.1527835174356, 96.28778676483908}}],
+       StatusArea[#, 500.]& ,
+       TagBoxNote->"500."],
+      StyleBox["500.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[500., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.5, 0.}, {0.55, 524.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{184.47142857142853`, 
+         202.1685714285714}, {-83.3339308909848, 96.28778676483908}}],
+       StatusArea[#, 524.]& ,
+       TagBoxNote->"524."],
+      StyleBox["524.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[524., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.55, 0.}, {0.6, 489.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{201.1685714285714, 
+         218.86571428571423`}, {-71.40309097122555, 96.28778676483908}}],
+       StatusArea[#, 489.]& ,
+       TagBoxNote->"489."],
+      StyleBox["489.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[489., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.6, 0.}, {0.65, 507.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{217.86571428571423`, 
+         235.5628571428571}, {-77.53895150138744, 96.28778676483908}}],
+       StatusArea[#, 507.]& ,
+       TagBoxNote->"507."],
+      StyleBox["507.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[507., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.65, 0.}, {0.7, 498.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{234.5628571428571, 
+         252.25999999999993`}, {-74.4710212363065, 96.28778676483908}}],
+       StatusArea[#, 498.]& ,
+       TagBoxNote->"498."],
+      StyleBox["498.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[498., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.7, 0.}, {0.75, 490.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{251.25999999999993`, 
+         268.9571428571428}, {-71.74397211179011, 96.28778676483908}}],
+       StatusArea[#, 490.]& ,
+       TagBoxNote->"490."],
+      StyleBox["490.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[490., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.75, 0.}, {0.8, 460.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{267.9571428571428, 
+         285.65428571428566`}, {-61.51753789485362, 96.28778676483908}}],
+       StatusArea[#, 460.]& ,
+       TagBoxNote->"460."],
+      StyleBox["460.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[460., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.8, 0.}, {0.85, 462.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{284.65428571428566`, 
+         302.35142857142847`}, {-62.19930017598274, 96.28778676483908}}],
+       StatusArea[#, 462.]& ,
+       TagBoxNote->"462."],
+      StyleBox["462.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[462., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.85, 0.}, {0.9, 481.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{301.35142857142847`, 
+         319.0485714285714}, {-68.67604184670917, 96.28778676483908}}],
+       StatusArea[#, 481.]& ,
+       TagBoxNote->"481."],
+      StyleBox["481.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[481., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.9, 0.}, {0.95, 490.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{318.0485714285714, 
+         335.7457142857142}, {-71.74397211179011, 96.28778676483908}}],
+       StatusArea[#, 490.]& ,
+       TagBoxNote->"490."],
+      StyleBox["490.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[490., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.95, 0.}, {1., 492.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{334.7457142857142, 
+         352.44285714285706`}, {-72.42573439291921, 96.28778676483908}}],
+       StatusArea[#, 492.]& ,
+       TagBoxNote->"492."],
+      StyleBox["492.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[492., {
+        GrayLevel[0]}], "Tooltip"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesOrigin->{0., 0.},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  PlotRange->{{0., 1.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.1]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.558704220365403*^9, 3.55871580970125*^9, 
+  3.558716083224823*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uniftest", "[", 
+  RowBox[{"0.04", ",", " ", "0.1", ",", " ", "10000"}], "]"}]], "Input",
+ CellChangeTimes->{{3.558704225371406*^9, 3.5587042417880096`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+   EdgeForm[Opacity[0.7]], {}, 
+   {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+    EdgeForm[Opacity[0.7]], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0., 0.}, {0.05, 366.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{17.499999999999996`, 
+         35.19714285714285}, {-24.92607796237779, 96.28778676483907}}],
+       StatusArea[#, 366.]& ,
+       TagBoxNote->"366."],
+      StyleBox["366.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[366., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.05, 0.}, {0.1, 505.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{34.19714285714285, 
+         51.8942857142857}, {-70.58107030413501, 96.28778676483907}}],
+       StatusArea[#, 505.]& ,
+       TagBoxNote->"505."],
+      StyleBox["505.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[505., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.1, 0.}, {0.15, 500.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{50.8942857142857, 
+         68.59142857142855}, {-68.938804392561, 96.28778676483907}}],
+       StatusArea[#, 500.]& ,
+       TagBoxNote->"500."],
+      StyleBox["500.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[500., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.15, 0.}, {0.2, 526.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{67.59142857142855, 
+         85.28857142857142}, {-77.47858713274582, 96.28778676483907}}],
+       StatusArea[#, 526.]& ,
+       TagBoxNote->"526."],
+      StyleBox["526.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[526., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.2, 0.}, {0.25, 513.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{84.28857142857142, 
+         101.98571428571427`}, {-73.2086957626534, 96.28778676483907}}],
+       StatusArea[#, 513.]& ,
+       TagBoxNote->"513."],
+      StyleBox["513.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[513., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.25, 0.}, {0.3, 533.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{100.98571428571427`, 
+         118.68285714285712`}, {-79.77775940894941, 96.28778676483907}}],
+       StatusArea[#, 533.]& ,
+       TagBoxNote->"533."],
+      StyleBox["533.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[533., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.3, 0.}, {0.35, 528.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{117.68285714285712`, 
+         135.37999999999997`}, {-78.13549349737539, 96.28778676483907}}],
+       StatusArea[#, 528.]& ,
+       TagBoxNote->"528."],
+      StyleBox["528.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[528., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.35, 0.}, {0.4, 527.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{134.37999999999997`, 
+         152.07714285714283`}, {-77.80704031506062, 96.28778676483907}}],
+       StatusArea[#, 527.]& ,
+       TagBoxNote->"527."],
+      StyleBox["527.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[527., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.4, 0.}, {0.45, 502.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{151.07714285714283`, 
+         168.7742857142857}, {-69.5957107571906, 96.28778676483907}}],
+       StatusArea[#, 502.]& ,
+       TagBoxNote->"502."],
+      StyleBox["502.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[502., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.45, 0.}, {0.5, 515.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{167.7742857142857, 
+         185.47142857142853`}, {-73.86560212728301, 96.28778676483907}}],
+       StatusArea[#, 515.]& ,
+       TagBoxNote->"515."],
+      StyleBox["515.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[515., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.5, 0.}, {0.55, 489.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{184.47142857142853`, 
+         202.1685714285714}, {-65.32581938709819, 96.28778676483907}}],
+       StatusArea[#, 489.]& ,
+       TagBoxNote->"489."],
+      StyleBox["489.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[489., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.55, 0.}, {0.6, 576.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{201.1685714285714, 
+         218.86571428571423`}, {-93.90124624848582, 96.28778676483907}}],
+       StatusArea[#, 576.]& ,
+       TagBoxNote->"576."],
+      StyleBox["576.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[576., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.6, 0.}, {0.65, 537.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{217.86571428571423`, 
+         235.5628571428571}, {-81.09157213820862, 96.28778676483907}}],
+       StatusArea[#, 537.]& ,
+       TagBoxNote->"537."],
+      StyleBox["537.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[537., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.65, 0.}, {0.7, 503.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{234.5628571428571, 
+         252.25999999999993`}, {-69.9241639395054, 96.28778676483907}}],
+       StatusArea[#, 503.]& ,
+       TagBoxNote->"503."],
+      StyleBox["503.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[503., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.7, 0.}, {0.75, 474.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{251.25999999999993`, 
+         268.9571428571428}, {-60.399021652376206`, 96.28778676483907}}],
+       StatusArea[#, 474.]& ,
+       TagBoxNote->"474."],
+      StyleBox["474.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[474., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.75, 0.}, {0.8, 538.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{267.9571428571428, 
+         285.65428571428566`}, {-81.4200253205234, 96.28778676483907}}],
+       StatusArea[#, 538.]& ,
+       TagBoxNote->"538."],
+      StyleBox["538.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[538., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.8, 0.}, {0.85, 496.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{284.65428571428566`, 
+         302.35142857142847`}, {-67.62499166330181, 96.28778676483907}}],
+       StatusArea[#, 496.]& ,
+       TagBoxNote->"496."],
+      StyleBox["496.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[496., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.85, 0.}, {0.9, 505.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{301.35142857142847`, 
+         319.0485714285714}, {-70.58107030413501, 96.28778676483907}}],
+       StatusArea[#, 505.]& ,
+       TagBoxNote->"505."],
+      StyleBox["505.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[505., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.9, 0.}, {0.95, 496.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{318.0485714285714, 
+         335.7457142857142}, {-67.62499166330181, 96.28778676483907}}],
+       StatusArea[#, 496.]& ,
+       TagBoxNote->"496."],
+      StyleBox["496.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[496., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.95, 0.}, {1., 371.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{334.7457142857142, 
+         352.44285714285706`}, {-26.56834387395179, 96.28778676483907}}],
+       StatusArea[#, 371.]& ,
+       TagBoxNote->"371."],
+      StyleBox["371.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[371., {
+        GrayLevel[0]}], "Tooltip"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesOrigin->{0., 0.},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  PlotRange->{{0., 1.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.1]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.558704243656707*^9, 3.558715810728634*^9, 
+  3.55871608663214*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uniftest", "[", 
+  RowBox[{"0.07", ",", " ", "0.1", ",", " ", "10000"}], "]"}]], "Input",
+ CellChangeTimes->{{3.558704248923394*^9, 3.558704257063385*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+   EdgeForm[Opacity[0.7]], {}, 
+   {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+    EdgeForm[Opacity[0.7]], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0., 0.}, {0.05, 85.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{17.499999999999996`, 35.19714285714285}, {
+         71.14203930818348, 96.28778676483907}}],
+       StatusArea[#, 85.]& ,
+       TagBoxNote->"85."],
+      StyleBox["85.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[85., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.05, 0.}, {0.1, 265.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{34.19714285714285, 51.894285714285715`}, {
+         20.009868223501087`, 96.28778676483907}}],
+       StatusArea[#, 265.]& ,
+       TagBoxNote->"265."],
+      StyleBox["265.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[265., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.1, 0.}, {0.15, 415.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{50.894285714285715`, 
+         68.59142857142857}, {-22.600274347067582`, 96.28778676483907}}],
+       StatusArea[#, 415.]& ,
+       TagBoxNote->"415."],
+      StyleBox["415.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[415., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.15, 0.}, {0.2, 542.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{67.59142857142857, 
+         85.28857142857143}, {-58.6768617234824, 96.28778676483907}}],
+       StatusArea[#, 542.]& ,
+       TagBoxNote->"542."],
+      StyleBox["542.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[542., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.2, 0.}, {0.25, 547.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{84.28857142857143, 
+         101.98571428571428`}, {-60.09719980916802, 96.28778676483907}}],
+       StatusArea[#, 547.]& ,
+       TagBoxNote->"547."],
+      StyleBox["547.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[547., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.25, 0.}, {0.3, 607.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{100.98571428571428`, 
+         118.68285714285713`}, {-77.14125683739547, 96.28778676483907}}],
+       StatusArea[#, 607.]& ,
+       TagBoxNote->"607."],
+      StyleBox["607.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[607., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.3, 0.}, {0.35, 608.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{117.68285714285713`, 
+         135.37999999999997`}, {-77.42532445453261, 96.28778676483907}}],
+       StatusArea[#, 608.]& ,
+       TagBoxNote->"608."],
+      StyleBox["608.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[608., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.35, 0.}, {0.4, 643.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{134.37999999999997`, 
+         152.07714285714286`}, {-87.36769105433197, 96.28778676483907}}],
+       StatusArea[#, 643.]& ,
+       TagBoxNote->"643."],
+      StyleBox["643.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[643., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.4, 0.}, {0.45, 666.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{151.07714285714286`, 
+         168.7742857142857}, {-93.90124624848582, 96.28778676483907}}],
+       StatusArea[#, 666.]& ,
+       TagBoxNote->"666."],
+      StyleBox["666.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[666., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.45, 0.}, {0.5, 646.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{167.7742857142857, 
+         185.47142857142856`}, {-88.21989390574333, 96.28778676483907}}],
+       StatusArea[#, 646.]& ,
+       TagBoxNote->"646."],
+      StyleBox["646.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[646., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.5, 0.}, {0.55, 629.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{184.47142857142856`, 
+         202.16857142857143`}, {-83.39074441441221, 96.28778676483907}}],
+       StatusArea[#, 629.]& ,
+       TagBoxNote->"629."],
+      StyleBox["629.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[629., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.55, 0.}, {0.6, 650.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{201.16857142857143`, 
+         218.86571428571426`}, {-89.35616437429184, 96.28778676483907}}],
+       StatusArea[#, 650.]& ,
+       TagBoxNote->"650."],
+      StyleBox["650.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[650., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.6, 0.}, {0.65, 664.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{217.86571428571426`, 
+         235.56285714285713`}, {-93.33311101421157, 96.28778676483907}}],
+       StatusArea[#, 664.]& ,
+       TagBoxNote->"664."],
+      StyleBox["664.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[664., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.65, 0.}, {0.7, 663.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{234.56285714285713`, 
+         252.25999999999996`}, {-93.04904339707446, 96.28778676483907}}],
+       StatusArea[#, 663.]& ,
+       TagBoxNote->"663."],
+      StyleBox["663.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[663., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.7, 0.}, {0.75, 559.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{251.25999999999996`, 
+         268.95714285714286`}, {-63.5060112148135, 96.28778676483907}}],
+       StatusArea[#, 559.]& ,
+       TagBoxNote->"559."],
+      StyleBox["559.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[559., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.75, 0.}, {0.8, 545.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{267.95714285714286`, 
+         285.6542857142857}, {-59.529064574893766`, 96.28778676483907}}],
+       StatusArea[#, 545.]& ,
+       TagBoxNote->"545."],
+      StyleBox["545.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[545., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.8, 0.}, {0.85, 533.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{284.6542857142857, 
+         302.3514285714285}, {-56.120253169248286`, 96.28778676483907}}],
+       StatusArea[#, 533.]& ,
+       TagBoxNote->"533."],
+      StyleBox["533.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[533., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.85, 0.}, {0.9, 397.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{301.3514285714285, 
+         319.0485714285714}, {-17.48705723859935, 96.28778676483907}}],
+       StatusArea[#, 397.]& ,
+       TagBoxNote->"397."],
+      StyleBox["397.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[397., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.9, 0.}, {0.95, 260.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{318.0485714285714, 335.74571428571426`}, {
+         21.4302063091867, 96.28778676483907}}],
+       StatusArea[#, 260.]& ,
+       TagBoxNote->"260."],
+      StyleBox["260.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[260., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.95, 0.}, {1., 76.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{334.74571428571426`, 352.4428571428571}, {
+         73.6986478624176, 96.28778676483907}}],
+       StatusArea[#, 76.]& ,
+       TagBoxNote->"76."],
+      StyleBox["76.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[76., {
+        GrayLevel[0]}], "Tooltip"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesOrigin->{0., 0.},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  PlotRange->{{0., 1.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.1]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.558704258523342*^9, 3.5587158117535563`*^9, 
+  3.558716091048839*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Test by putting in prior sampling of x\
+\>", "Section",
+ CellChangeTimes->{{3.5587145970271473`*^9, 3.558714624321866*^9}}],
+
+Cell["\<\
+Cook, Gelman & Rubin (2006, Journal of Computational and Graphical \
+Statistics) suggest a way of testing posterior distributions. Unlike the \
+cases we just did, this requires sampling the true value from the prior \
+distribution and then generating the data. In this case, P(x < x_true) is \
+Uniform(0,1). Doing this below fixes the issues we saw above. \
+\>", "Text",
+ CellChangeTimes->{{3.55871767418778*^9, 3.558717782787034*^9}, {
+  3.558717827438737*^9, 3.5587179100855007`*^9}, {3.558717948200482*^9, 
+  3.558717954033373*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{
+     "The", " ", "function", " ", "below", " ", "draws", " ", "a", " ", 
+      "true", " ", "value", " ", "from"}], " ", "-", 
+     RowBox[{
+     "x0", " ", "to", " ", "x0", " ", "and", " ", "then", " ", "a", " ", 
+      "Gaussian", " ", "with", " ", "width", " ", "\[Sigma]"}]}], ")"}], ".", 
+   " "}]}]], "Input",
+ CellChangeTimes->{{3.55871785671316*^9, 3.558717861487981*^9}, {
+  3.5587179136382113`*^9, 3.55871791398507*^9}, {3.558718033851125*^9, 
+  3.5587180626018467`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"data2", "[", 
+    RowBox[{"\[Sigma]_", ",", " ", "x0_", ",", " ", "N_"}], "]"}], ":=", "  ", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"#1", ",", " ", 
+        RowBox[{"#1", "+", "#2"}]}], "}"}], "&"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"RandomReal", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "x0"}], ",", "x0"}], "}"}], ",", " ", "N"}], "]"}], 
+       ",", 
+       RowBox[{"RandomVariate", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0.0", ",", "\[Sigma]"}], "]"}], ",", "N"}], "]"}]}], 
+      "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.558714650593058*^9, 3.558714691188583*^9}, {
+   3.5587147221574383`*^9, 3.558714775793668*^9}, {3.558714833299796*^9, 
+   3.558714839267404*^9}, 3.558714875886209*^9, {3.558714909206266*^9, 
+   3.558714956709447*^9}, {3.558715136695179*^9, 3.558715145691969*^9}, {
+   3.558715232032049*^9, 3.5587152343641863`*^9}, 3.558715823668687*^9, 
+   3.558716104895608*^9, {3.558717183427446*^9, 3.5587172445261803`*^9}, {
+   3.5587175158473988`*^9, 3.558717524250743*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"Now", " ", "apply", " ", "the", " ", "test"}], ",", " ", 
+   RowBox[{
+   "taking", " ", "into", " ", "account", " ", "the", " ", "true", " ", 
+    "value", " ", "as", " ", "well"}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.5587180773177032`*^9, 3.558718096302971*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"uniftest2", "[", 
+    RowBox[{"\[Sigma]_", ",", " ", "x0_", ",", " ", "N_"}], "]"}], ":=", 
+   RowBox[{"Histogram", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"prob", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ",", " ", "\[Sigma]", ",", " ", "x0",
+         ",", " ", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], "/@", " ", 
+     RowBox[{"data2", "[", 
+      RowBox[{"\[Sigma]", ",", "x0", ",", " ", "N"}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.5587172640940866`*^9, 3.558717381164795*^9}, {
+  3.558717529389469*^9, 3.558717566376899*^9}, {3.55871759846601*^9, 
+  3.558717613866645*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Note", " ", "that", " ", "this", " ", "is", " ", "now", " ", 
+    RowBox[{"uniform", "!"}]}], " ", "*)"}], " "}]], "Input",
+ CellChangeTimes->{{3.5587180978713408`*^9, 3.558718128964199*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uniftest2", "[", 
+  RowBox[{"0.07", ",", " ", "0.1", ",", " ", "10000"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5587175798539047`*^9, 3.558717586123867*^9}, {
+  3.5587176216126738`*^9, 3.558717639560833*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+   EdgeForm[Opacity[0.7]], {}, 
+   {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+    EdgeForm[Opacity[0.7]], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0., 0.}, {0.05, 508.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{17.499999999999996`, 
+         35.19714285714285}, {-68.71908827060297, 96.28778676483908}}],
+       StatusArea[#, 508.]& ,
+       TagBoxNote->"508."],
+      StyleBox["508.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[508., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.05, 0.}, {0.1, 469.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{34.19714285714285, 
+         51.8942857142857}, {-56.128009281661534`, 96.28778676483908}}],
+       StatusArea[#, 469.]& ,
+       TagBoxNote->"469."],
+      StyleBox["469.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[469., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.1, 0.}, {0.15, 497.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{50.8942857142857, 
+         68.59142857142855}, {-65.16775829936309, 96.28778676483908}}],
+       StatusArea[#, 497.]& ,
+       TagBoxNote->"497."],
+      StyleBox["497.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[497., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.15, 0.}, {0.2, 482.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{67.59142857142855, 
+         85.28857142857142}, {-60.32503561130868, 96.28778676483908}}],
+       StatusArea[#, 482.]& ,
+       TagBoxNote->"482."],
+      StyleBox["482.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[482., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.2, 0.}, {0.25, 503.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{84.28857142857142, 
+         101.98571428571427`}, {-67.10484737458482, 96.28778676483908}}],
+       StatusArea[#, 503.]& ,
+       TagBoxNote->"503."],
+      StyleBox["503.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[503., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.25, 0.}, {0.3, 509.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{100.98571428571427`, 
+         118.68285714285712`}, {-69.04193644980658, 96.28778676483908}}],
+       StatusArea[#, 509.]& ,
+       TagBoxNote->"509."],
+      StyleBox["509.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[509., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.3, 0.}, {0.35, 497.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{117.68285714285712`, 
+         135.37999999999997`}, {-65.16775829936309, 96.28778676483908}}],
+       StatusArea[#, 497.]& ,
+       TagBoxNote->"497."],
+      StyleBox["497.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[497., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.35, 0.}, {0.4, 478.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{134.37999999999997`, 
+         152.07714285714283`}, {-59.03364289449418, 96.28778676483908}}],
+       StatusArea[#, 478.]& ,
+       TagBoxNote->"478."],
+      StyleBox["478.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[478., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.4, 0.}, {0.45, 513.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{151.07714285714283`, 
+         168.7742857142857}, {-70.33332916662108, 96.28778676483908}}],
+       StatusArea[#, 513.]& ,
+       TagBoxNote->"513."],
+      StyleBox["513.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[513., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.45, 0.}, {0.5, 524.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{167.7742857142857, 
+         185.47142857142853`}, {-73.884659137861, 96.28778676483908}}],
+       StatusArea[#, 524.]& ,
+       TagBoxNote->"524."],
+      StyleBox["524.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[524., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.5, 0.}, {0.55, 508.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{184.47142857142853`, 
+         202.1685714285714}, {-68.71908827060297, 96.28778676483908}}],
+       StatusArea[#, 508.]& ,
+       TagBoxNote->"508."],
+      StyleBox["508.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[508., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.55, 0.}, {0.6, 512.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{201.1685714285714, 
+         218.86571428571423`}, {-70.01048098741747, 96.28778676483908}}],
+       StatusArea[#, 512.]& ,
+       TagBoxNote->"512."],
+      StyleBox["512.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[512., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.6, 0.}, {0.65, 586.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{217.86571428571423`, 
+         235.5628571428571}, {-93.9012462484858, 96.28778676483908}}],
+       StatusArea[#, 586.]& ,
+       TagBoxNote->"586."],
+      StyleBox["586.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[586., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.65, 0.}, {0.7, 492.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{234.5628571428571, 
+         252.25999999999993`}, {-63.55351740334494, 96.28778676483908}}],
+       StatusArea[#, 492.]& ,
+       TagBoxNote->"492."],
+      StyleBox["492.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[492., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.7, 0.}, {0.75, 505.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{251.25999999999993`, 
+         268.9571428571428}, {-67.75054373299209, 96.28778676483908}}],
+       StatusArea[#, 505.]& ,
+       TagBoxNote->"505."],
+      StyleBox["505.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[505., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.75, 0.}, {0.8, 470.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{267.9571428571428, 
+         285.65428571428566`}, {-56.45085746086518, 96.28778676483908}}],
+       StatusArea[#, 470.]& ,
+       TagBoxNote->"470."],
+      StyleBox["470.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[470., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.8, 0.}, {0.85, 533.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{284.65428571428566`, 
+         302.35142857142847`}, {-76.79029275069361, 96.28778676483908}}],
+       StatusArea[#, 533.]& ,
+       TagBoxNote->"533."],
+      StyleBox["533.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[533., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.85, 0.}, {0.9, 473.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{301.35142857142847`, 
+         319.0485714285714}, {-57.41940199847606, 96.28778676483908}}],
+       StatusArea[#, 473.]& ,
+       TagBoxNote->"473."],
+      StyleBox["473.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[473., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.9, 0.}, {0.95, 461.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{318.0485714285714, 
+         335.7457142857142}, {-53.545223848032535`, 96.28778676483908}}],
+       StatusArea[#, 461.]& ,
+       TagBoxNote->"461."],
+      StyleBox["461.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[461., {
+        GrayLevel[0]}], "Tooltip"]& ], 
+    TagBox[
+     TooltipBox[
+      TagBox[
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0.95, 0.}, {1., 480.}, "RoundingRadius" -> 0]},
+        ImageSizeCache->{{334.7457142857142, 
+         352.44285714285706`}, {-59.67933925290144, 96.28778676483908}}],
+       StatusArea[#, 480.]& ,
+       TagBoxNote->"480."],
+      StyleBox["480.`", {
+        GrayLevel[0]}, StripOnInput -> False]],
+     Annotation[#, 
+      Style[480., {
+        GrayLevel[0]}], "Tooltip"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesOrigin->{0., 0.},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  PlotRange->{{0., 1.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.1]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.5587175867460938`*^9, {3.558717616826055*^9, 3.558717642746344*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{114, Automatic}, {Automatic, 133}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 536, 18, 55, "Input"],
+Cell[CellGroupData[{
+Cell[1118, 42, 822, 21, 43, "Input"],
+Cell[1943, 65, 732, 26, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2712, 96, 164, 3, 27, "Input"],
+Cell[2879, 101, 747, 26, 70, "Output"]
+}, Open  ]],
+Cell[3641, 130, 592, 17, 43, "Input"],
+Cell[CellGroupData[{
+Cell[4258, 151, 181, 3, 27, "Input"],
+Cell[4442, 156, 13783, 419, 241, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18262, 580, 181, 3, 27, "Input"],
+Cell[18446, 585, 13785, 419, 241, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32268, 1009, 179, 3, 27, "Input"],
+Cell[32450, 1014, 13794, 419, 241, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46281, 1438, 133, 3, 67, "Section"],
+Cell[46417, 1443, 545, 9, 56, "Text"],
+Cell[46965, 1454, 566, 14, 43, "Input"],
+Cell[47534, 1470, 1229, 30, 58, "Input"],
+Cell[48766, 1502, 332, 7, 27, "Input"],
+Cell[49101, 1511, 746, 20, 27, "Input"],
+Cell[49850, 1533, 249, 5, 27, "Input"],
+Cell[CellGroupData[{
+Cell[50124, 1542, 233, 4, 27, "Input"],
+Cell[50360, 1548, 13795, 419, 241, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
